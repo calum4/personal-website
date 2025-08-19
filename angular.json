@@ -79,6 +79,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*.html",
+                "input": "src",
+                "output": "html"
               }
             ],
             "styles": [

@@ -19,6 +19,7 @@
   @if (command.suggestions !== undefined) {
     {{command.suggestions.join("  ")}}
   } @else {
+    <!-- START COMMAND CHECK -->
     @switch (command.name) {
       @case ("help") {
         Available Commands: {{COMMANDS.join(",")}}
@@ -43,5 +44,6 @@
         {{command.name}}: command not found, type "help" for a list of available commands
       }
     }
+    <!-- END COMMAND CHECK -->
   }
 }
