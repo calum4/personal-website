@@ -1,0 +1,42 @@
+:host {
+  --border-padding: 0.75rem;
+
+  display: block;
+
+  height: calc(100vh - (2 * var(--border-padding)));
+  width: calc(100vw - (2 * var(--border-padding)));
+
+  overflow: hidden;
+
+  padding: var(--border-padding);
+
+  background: var(--background-colour);
+}
+
+.terminal-container {
+  --border-width: 0.2rem;
+  --content-padding: 1.5rem;
+
+  height: calc(100% - (2 * var(--border-width)) - (2 * var(--content-padding)));
+  width: calc(100% - (2 * var(--border-width)) - (2 * var(--content-padding)));
+
+  padding: var(--content-padding);
+
+  border: var(--border-width) solid var(--border-colour);
+  border-radius: 1rem;
+}
+
+.content {
+  height: 100%;
+  width: 100%;
+
+  overflow-x: clip;
+  overflow-y: auto;
+
+  /*display: flex;*/
+  /*flex-direction: column-reverse;*/
+}
+
+/*pre {*/
+/*  margin: 0;*/
+/*}*/

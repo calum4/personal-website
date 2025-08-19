@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Cascadia Code";
+  src: url("../public/fonts/CascadiaCode.ttf");
+}
+
+* {
+  font-family: "Cascadia Code", monospace;
+  color: var(--text-colour);
+}
+
+html {
+  --background-colour: #212234;
+  --border-colour: #79119b;
+  --text-colour: #fefefe;
+}
