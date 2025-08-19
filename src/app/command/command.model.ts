@@ -6,6 +6,7 @@ export const COMMANDS = [
   "linkedin",
   "repo",
   "acknowledgement",
+  "reset"
 ];
 
 export type CommandModel = {

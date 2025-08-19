@@ -31,6 +31,9 @@ export const CommandHistoryStore = signalStore(
     },
     clearHistory(): void {
       patchState(store, () => ({history: [], hasBeenCleared: true}));
+    },
+    reset(): void {
+      patchState(store, initialState);
     }
   })),
 );

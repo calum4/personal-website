@@ -45,6 +45,8 @@ export class Command implements OnInit, OnDestroy {
     if (event.key === "Enter") {
       if (element.value == "clear") {
         this.store.clearHistory();
+      } else if (element.value == "reset") {
+        this.store.reset();
       } else {
         this.store.newCommand(element.value);
       }

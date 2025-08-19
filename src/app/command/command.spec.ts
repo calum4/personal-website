@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Command } from './command';
 import {COMMANDS} from './command.model';
 
-const SKIP_COMMANDS = ["clear", ""];
+const SKIP_COMMANDS = ["clear", "", "reset"];
 
 describe('Command', () => {
   let component: Command;
