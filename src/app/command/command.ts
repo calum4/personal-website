@@ -17,7 +17,6 @@ export class Command implements OnInit, OnDestroy {
   @Input() command: CommandModel|null = null;
 
   readonly store = inject(CommandHistoryStore);
-
   readonly COMMANDS = COMMANDS;
 
   ngOnInit() {
@@ -43,17 +42,43 @@ export class Command implements OnInit, OnDestroy {
   }
 
   onKeyDownEvent(event: KeyboardEvent) {
-    if (event.key !== "Enter") return;
-
     const element = document.getElementById("commandInput") as HTMLInputElement | null;
     if (element === null) return;
 
-    if (element.value == "clear") {
-      this.store.clearHistory();
-    } else {
-      this.store.newCommand(element.value);
+    if (event.key === "Enter") {
+      if (element.value == "clear") {
+        this.store.clearHistory();
+      } else {
+        this.store.newCommand(element.value);
+      }
+
+      element.value = "";
+    } else if (event.key === "Tab") {
+      event.preventDefault();
+
+      if (element.value === "") return;
+
+      const similar = this.similarCommands(element.value);
+      if (similar.length === 0) {
+        return;
+      } else if (similar.length === 1) {
+        element.value = similar[0];
+      } else {
+        this.store.newSuggestion(element.value, similar);
+        element.value = "";
+      }
+    }
+  }
+
+  similarCommands(command: string): string[] {
+    const similar = [];
+
+    for (const name of COMMANDS) {
+      if (name.startsWith(command)) {
+        similar.push(name);
+      }
     }
 
-    element.value = "";
+    return similar;
   }
 }

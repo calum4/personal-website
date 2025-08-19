@@ -16,10 +16,16 @@ export const CommandHistoryStore = signalStore(
   {providedIn: "root"},
   withState(initialState),
   withMethods((store) => ({
-    newCommand(command: string): void {
+    newCommand(name: string): void {
       patchState(store, (state) => ({
         nextId: state.nextId + 1,
-        history: [...state.history, {id: state.nextId, name: command}],
+        history: [...state.history, {id: state.nextId, name}],
+      }));
+    },
+    newSuggestion(name: string, suggestions: string[]): void {
+      patchState(store, (state) => ({
+        nextId: state.nextId + 1,
+        history: [...state.history, {id: state.nextId, name, suggestions}],
       }));
     },
     clearHistory(): void {

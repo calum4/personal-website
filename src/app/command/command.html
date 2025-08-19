@@ -16,16 +16,20 @@
 </div>
 
 @if (command != null) {
-  @switch (command.name) {
-    @case ("help") {
-      Available Commands: {{COMMANDS.join(",")}}
-    }
-    @case ("whoami") {
-      Calum
-    }
-    @case ("") {}
-    @default {
-      {{command.name}}: command not found, type "help" for a list of available commands
+  @if (command.suggestions !== undefined) {
+    {{command.suggestions.join("  ")}}
+  } @else {
+    @switch (command.name) {
+      @case ("help") {
+        Available Commands: {{COMMANDS.join(",")}}
+      }
+      @case ("whoami") {
+        Calum
+      }
+      @case ("") {}
+      @default {
+        {{command.name}}: command not found, type "help" for a list of available commands
+      }
     }
   }
 }
