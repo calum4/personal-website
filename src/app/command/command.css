@@ -5,6 +5,7 @@
 
 .command-prefix-container {
   justify-content: flex-start;
+  font-weight: bold;
 }
 
 .command-input-container {
@@ -12,6 +13,7 @@
 }
 
 #commandInput {
+  height: 100%;
   width: 100%;
 
   background: unset;
@@ -19,4 +21,5 @@
   padding: unset;
   margin: unset;
   outline: unset;
+  font-size: unset;
 }

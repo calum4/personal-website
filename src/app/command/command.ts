@@ -1,9 +1,10 @@
-import {Component, OnDestroy, OnInit} from "@angular/core";
+import {Component, inject, Input, OnDestroy, OnInit} from "@angular/core";
+import {CommandHistoryStore} from '../store/command-history.store';
 
 const COMMANDS = [
   "help",
   "whoami",
-  "acknowledgements",
+  "clear",
 ];
 
 @Component({
@@ -13,15 +14,20 @@ const COMMANDS = [
   styleUrl: './command.css'
 })
 export class Command implements OnInit, OnDestroy {
+  @Input() command: CommandModel|null = null;
+
+  readonly store = inject(CommandHistoryStore);
+
   readonly COMMANDS = COMMANDS;
-  readonly command: string|null = "help";
 
   ngOnInit() {
-    document.addEventListener("click", this.onClickEvent);
+    if (this.command === null) {
+      document.addEventListener("click", this.onClickEvent);
 
-    const element = document.getElementById("commandInput");
-    if (element !== null) {
-      element.focus();
+      const element = document.getElementById("commandInput");
+      if (element !== null) {
+        element.focus();
+      }
     }
   }
 
@@ -42,6 +48,12 @@ export class Command implements OnInit, OnDestroy {
     const element = document.getElementById("commandInput") as HTMLInputElement | null;
     if (element === null) return;
 
+    if (element.value == "clear") {
+      this.store.clearHistory();
+    } else {
+      this.store.newCommand(element.value);
+    }
 
+    element.value = "";
   }
 }

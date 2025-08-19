@@ -8,21 +8,24 @@
 
   <div class="command-input-container">
     @if (command === null) {
-      <input id="commandInput" type="text" name="command-label" aria-label="Command Input" (keydown)="onKeyDownEvent($event)" #commandInput>
+      <input id="commandInput" type="text" name="command-label" aria-label="Command Input" (keydown)="onKeyDownEvent($event)">
     } @else {
-      <span>{{command}}</span>
+      <span>{{command.name}}</span>
     }
   </div>
 </div>
 
 @if (command != null) {
-  @switch (command) {
+  @switch (command.name) {
     @case ("help") {
       Available Commands: {{COMMANDS.join(",")}}
     }
-
+    @case ("whoami") {
+      Calum
+    }
+    @case ("") {}
     @default {
-      {{command}}: command not found
+      {{command.name}}: command not found, type "help" for a list of available commands
     }
   }
 }

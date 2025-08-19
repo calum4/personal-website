@@ -1,11 +1,13 @@
 <div class="terminal-container">
   <div class="content">
-    <div class="auth">
-      login as: Calum<br>
-      Authenticating with public key "ed25519-key-personal-website"
-    </div>
+    @if (!store.hasBeenCleared()) {
+      <div class="auth">
+        login as: Calum<br>
+        Authenticating with public key "ed25519-key-personal-website"
+      </div>
 
-    <br>
+      <br>
+
 
 <pre class="banner">
  ██████╗ █████╗ ██╗     ██╗   ██╗███╗   ███╗███╗   ███╗   ██████╗ ███████╗██╗   ██╗
@@ -16,19 +18,24 @@
  ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚═╝╚═════╝ ╚══════╝  ╚═══╝
 </pre>
 
-    <div class="welcome">
-      <span>Welcome to calumm.dev v{{version}}</span>
-      <br>
-      <span>Type "help" to see a list of available commands</span>
-      <br>
-      <br>
-      <span>
-        ** This website is open-source, check it out
-        <a [href]="repoUrl" target="_blank">here</a> **
-      </span>
-    </div>
+      <div class="welcome">
+        <span>Welcome to calumm.dev v{{version}}</span>
+        <br>
+        <span>Type "help" to see a list of available commands</span>
+        <br>
+        <br>
+        <span>
+          ** This website is open-source, check it out
+          <a [href]="repoUrl" target="_blank">here</a> **
+        </span>
+      </div>
 
-    <br>
+      <br>
+    }
+
+    @for (command of store.history(); track command.id) {
+      <app-command [command]="command" />
+    }
 
     <app-command />
   </div>
