@@ -1,0 +1,22 @@
+.command {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.command-prefix-container {
+  justify-content: flex-start;
+}
+
+.command-input-container {
+  width: 100%;
+}
+
+#commandInput {
+  width: 100%;
+
+  background: unset;
+  border: unset;
+  padding: unset;
+  margin: unset;
+  outline: unset;
+}

@@ -1,6 +1,9 @@
 {
   "name": "personal-website",
   "version": "0.0.0",
+  "repository": {
+    "url": "https://github.com/calum4/personal-website"
+  },
   "license": "(MIT OR Apache-2.0)",
   "scripts": {
     "ng": "ng",

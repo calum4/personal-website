@@ -16,4 +16,24 @@ html {
   --background-colour: #212234;
   --border-colour: #79119b;
   --text-colour: #fefefe;
+  --text-accent-colour-1: #5f95c3;
+  --text-accent-colour-2: #10c295;
+  --text-accent-colour-3: #860fa8;
+  --text-accent-colour-4: #838697;
+}
+
+.text-accent-colour-1 {
+  color: var(--text-accent-colour-1);
+}
+
+.text-accent-colour-2 {
+  color: var(--text-accent-colour-2);
+}
+
+.text-accent-colour-3 {
+  color: var(--text-accent-colour-3);
+}
+
+.text-accent-colour-4 {
+  color: var(--text-accent-colour-4);
 }

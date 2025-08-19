@@ -1,12 +1,35 @@
 <div class="terminal-container">
   <div class="content">
-    <pre>
+    <div class="auth">
+      login as: Calum<br>
+      Authenticating with public key "ed25519-key-personal-website"
+    </div>
+
+    <br>
+
+<pre class="banner">
  ██████╗ █████╗ ██╗     ██╗   ██╗███╗   ███╗███╗   ███╗   ██████╗ ███████╗██╗   ██╗
 ██╔════╝██╔══██╗██║     ██║   ██║████╗ ████║████╗ ████║   ██╔══██╗██╔════╝██║   ██║
 ██║     ███████║██║     ██║   ██║██╔████╔██║██╔████╔██║   ██║  ██║█████╗  ██║   ██║
 ██║     ██╔══██║██║     ██║   ██║██║╚██╔╝██║██║╚██╔╝██║   ██║  ██║██╔══╝  ╚██╗ ██╔╝
 ╚██████╗██║  ██║███████╗╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║██╗██████╔╝███████╗ ╚████╔╝
  ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚═╝╚═════╝ ╚══════╝  ╚═══╝
-    </pre>
+</pre>
+
+    <div class="welcome">
+      <span>Welcome to calumm.dev v{{version}}</span>
+      <br>
+      <span>Type "help" to see a list of available commands</span>
+      <br>
+      <br>
+      <span>
+        ** This website is open-source, check it out
+        <a [href]="repoUrl" target="_blank">here</a> **
+      </span>
+    </div>
+
+    <br>
+
+    <app-command />
   </div>
 </div>
