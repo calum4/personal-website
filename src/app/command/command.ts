@@ -1,11 +1,7 @@
 import {Component, inject, Input, OnDestroy, OnInit} from "@angular/core";
 import {CommandHistoryStore} from '../store/command-history.store';
-
-const COMMANDS = [
-  "help",
-  "whoami",
-  "clear",
-];
+import { repository } from "../../../package.json";
+import {CommandModel, COMMANDS} from './command.model';
 
 @Component({
   selector: 'app-command',
@@ -18,6 +14,7 @@ export class Command implements OnInit, OnDestroy {
 
   readonly store = inject(CommandHistoryStore);
   readonly COMMANDS = COMMANDS;
+  readonly repoUrl = repository.url;
 
   ngOnInit() {
     if (this.command === null) {

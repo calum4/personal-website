@@ -1,4 +1,5 @@
 import {patchState, signalStore, withMethods, withState} from '@ngrx/signals';
+import {CommandModel} from '../command/command.model';
 
 type CommandHistoryState = {
   nextId: number,

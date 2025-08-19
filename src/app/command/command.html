@@ -24,7 +24,19 @@
         Available Commands: {{COMMANDS.join(",")}}
       }
       @case ("whoami") {
-        Calum
+        Hi! I'm Calum, a Software Developer with a passion for Rust, experienced in both frontend and backend development
+      }
+      @case ("github") {
+        You can find my GitHub profile here -> <a href="https://github.com/Calum4" target="_blank">github.com/Calum4</a>
+      }
+      @case ("linkedin") {
+        You can find my LinkedIn here -> <a href="https://linkedin.com/in/calummcduff" target="_blank">linkedin.com/in/calummcduff</a>
+      }
+      @case ("repo") {
+        You can find the Git repository for this website <a [href]="repoUrl" target="_blank">here</a>
+      }
+      @case ("acknowledgement") {
+        Special thanks to <a href="https://github.com/m4tt72" target="_blank">m4tt72</a> for inspiring the design
       }
       @case ("") {}
       @default {

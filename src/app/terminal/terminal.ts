@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { Command } from '../command/command';
 import { version, repository } from "../../../package.json";
 import {CommandHistoryStore} from '../store/command-history.store';
