@@ -39,4 +39,11 @@
 
 .banner {
   margin: 0;
+  display: none;
+}
+
+@media screen and (min-width: 60rem) {
+  .banner {
+    display: block;
+  }
 }
