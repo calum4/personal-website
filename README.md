@@ -3,7 +3,6 @@
 - README
 - prettier
 - fix scroll
-- easier customisation
 - strip comments from config file on production builds
 
 

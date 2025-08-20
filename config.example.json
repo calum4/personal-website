@@ -54,5 +54,12 @@
         "com"
       ]
     }
+  },
+
+  "customCommands": {
+    "ping": {
+      "enabled": true,
+      "content": "pong"
+    }
   }
 }

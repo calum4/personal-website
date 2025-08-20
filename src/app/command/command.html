@@ -44,7 +44,11 @@
         <div class="hidden-email" #hiddenEmail><u class="email-click-reveal" (click)="onEmailRevealClick($event)">Click to reveal my email address</u></div>
       }
       @default {
-        An unknown error occurred, please create an issue <a [href]="repoUrl" target="_blank">here</a>
+        @if (commandsService.customCommand(command.name)?.enabled ?? false) {
+          {{commandsService.customCommand(command.name)!.content}}
+        } @else {
+          An unknown error occurred, please create an issue <a [href]="repoUrl" target="_blank">here</a>
+        }
       }
     } <!-- END COMMAND CHECK -->
   } @else if (commandsService.commandStatus(command.name) == CommandStatus.Disabled) {
