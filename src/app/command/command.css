@@ -23,3 +23,7 @@
   outline: unset;
   font-size: unset;
 }
+
+.email-click-reveal {
+  cursor: pointer;
+}

@@ -37,3 +37,7 @@ html {
 .text-accent-colour-4 {
   color: var(--text-accent-colour-4);
 }
+
+.block-bots {
+  display: none;
+}

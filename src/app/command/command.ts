@@ -1,7 +1,8 @@
-import {Component, inject, Input, OnDestroy, OnInit, signal} from "@angular/core";
+import {Component, ElementRef, inject, Input, OnDestroy, OnInit, signal, viewChild} from "@angular/core";
 import {CommandHistoryStore} from '../store/command-history.store';
 import { repository } from "../../../package.json";
 import {CommandModel, COMMANDS} from './command.model';
+import {email} from "../../../config.json";
 
 @Component({
   selector: 'app-command',
@@ -17,6 +18,7 @@ export class Command implements OnInit, OnDestroy {
   readonly repoUrl = repository.url;
 
   readonly replayIndex = signal<number|null>(null);
+  readonly hiddenEmailComponent = viewChild<ElementRef<HTMLDivElement>>("hiddenEmail");
 
   ngOnInit() {
     if (this.command === null) {
@@ -130,5 +132,14 @@ export class Command implements OnInit, OnDestroy {
     }
 
     return similar;
+  }
+
+  onEmailRevealClick(_event: MouseEvent) {
+    const element = this.hiddenEmailComponent()?.nativeElement;
+    if (element === undefined) return;
+
+    const content = email.username + "<span class='block-bots' aria-hidden='true'>david@example.org</span>" + "<!-- damn scrapers dave@example.com -->&commat;<!-- abcdefg&commat;example.com -->" + email.domainLevels.join(".<!-- dufhi -->");
+
+    element.setHTMLUnsafe(`Email me at -> ${content}`);
   }
 }

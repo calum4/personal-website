@@ -3,7 +3,6 @@
 - README
 - prettier
 - fix scroll
-- email
 - easier customisation
 
 # PersonalWebsite

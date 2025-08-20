@@ -1,0 +1,14 @@
+{
+  "__comment_email__": "Break down the email address into parts to hopefully avoid spam crawling",
+  "email": {
+    "__comment_username__": "Username portion the email address, eg 'john.doe@example.com' would be 'john.doe'",
+    "username": "john.doe",
+
+    "__comment_domainLevels__": "Domain levels, eg 'email.example.com' would be ['email', 'example', 'com']",
+    "domainLevels": [
+      "email",
+      "example",
+      "com"
+    ]
+  }
+}
