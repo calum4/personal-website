@@ -41,4 +41,12 @@ function removeComments(obj: any) {
 
 removeComments(json);
 
+json.stripped = true;
+
+// Encodes email data using Base64 in hopes of obfuscating the email from scrapers
+json.defaultCommands.email.username = btoa(json.defaultCommands.email.username);
+for (let i = 0; i < json.defaultCommands.email.domainLevels.length; i++) {
+  json.defaultCommands.email.domainLevels[i] = btoa(json.defaultCommands.email.domainLevels[i]);
+}
+
 fs.writeFileSync(outputFile, JSON.stringify(json), {encoding: "utf8"});

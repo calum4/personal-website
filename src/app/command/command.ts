@@ -14,11 +14,13 @@ import {ConfigService} from "../core/services/config.service";
 export class Command implements OnInit, OnDestroy {
   @Input() command: CommandModel|null = null;
 
-  readonly config = ConfigService.Config;
-  readonly CommandStatus = CommandStatus;
-
   readonly store = inject(CommandHistoryStore);
   readonly commandsService = inject(CommandsService);
+  readonly configService = inject(ConfigService);
+
+  readonly config = this.configService.config();
+  readonly CommandStatus = CommandStatus;
+
   readonly repoUrl = repository.url;
 
   readonly replayIndex = signal<number|null>(null);

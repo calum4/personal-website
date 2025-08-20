@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {ConfigService, CustomCommand} from "./config.service";
+import {inject, Injectable} from "@angular/core";
+import {ConfigService, Config, CustomCommand} from "./config.service";
 
 export const DEFAULT_COMMANDS = [
   "help",
@@ -21,6 +21,9 @@ export enum CommandStatus {
 
 @Injectable({providedIn: "root"})
 export class CommandsService {
+  private readonly configService = inject(ConfigService);
+  private readonly config = this.configService.config();
+
   private _enabledCommands: string[]|undefined;
 
   enabledCommands(): string[] {
@@ -28,14 +31,14 @@ export class CommandsService {
       const commands: string[] = [];
 
       for (const command of DEFAULT_COMMANDS) {
-        const commandConfig: {enabled?: boolean} = ConfigService.Config.defaultCommands[command as keyof typeof ConfigService.Config.defaultCommands];
+        const commandConfig: {enabled?: boolean} = this.config.defaultCommands[command as keyof Config["defaultCommands"]];
 
         if (!commandConfig || commandConfig?.enabled) {
           commands.push(command);
         }
       }
 
-      for (const [name, data] of Object.entries(ConfigService.Config.customCommands)) {
+      for (const [name, data] of Object.entries(this.config.customCommands)) {
         if (!data.enabled) continue;
 
         commands.push(name);
@@ -50,7 +53,7 @@ export class CommandsService {
   commandStatus(command: string): CommandStatus {
     if (this.enabledCommands().includes(command)) {
       return CommandStatus.Enabled;
-    } else if (DEFAULT_COMMANDS.includes(command) || ConfigService.Config.defaultCommands[command as keyof typeof ConfigService.Config.defaultCommands]) {
+    } else if (DEFAULT_COMMANDS.includes(command) || this.config.defaultCommands[command as keyof Config["defaultCommands"]]) {
       return CommandStatus.Disabled;
     } else {
       return CommandStatus.Unknown;
@@ -58,7 +61,7 @@ export class CommandsService {
   }
 
   customCommand(command: string): null | CustomCommand {
-    const data = ConfigService.Config.customCommands[command];
+    const data = this.config.customCommands[command];
     if (!data) return null;
     return data;
   }

@@ -14,8 +14,9 @@ import {ConfigService} from "../core/services/config.service";
 })
 export class Terminal {
   readonly store = inject(CommandHistoryStore);
+  readonly configService = inject(ConfigService);
   readonly version: string = version;
   readonly repoUrl = repository.url;
 
-  readonly config = ConfigService.Config;
+  readonly config = this.configService.config();
 }
