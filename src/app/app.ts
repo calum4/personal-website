@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Terminal } from './terminal/terminal';
+import {Title} from "@angular/platform-browser";
+import {pageTitle} from "../../config.json";
 
 @Component({
   selector: 'app-root',
@@ -9,4 +11,7 @@ import { Terminal } from './terminal/terminal';
   styleUrl: './app.css'
 })
 export class App {
+  constructor(private readonly titleService: Title) {
+    this.titleService.setTitle(pageTitle);
+  }
 }

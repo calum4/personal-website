@@ -2,6 +2,9 @@
   "username": "guest",
   "hostname": "localhost",
 
+  "__comment_pageTitle__": "Title that is shown on a tab in a browser",
+  "pageTitle": "personal-website",
+
   "simulatedAuth": {
     "__comment__": "Simulated SSH Pubkey Auth presented at the top of the terminal",
 
