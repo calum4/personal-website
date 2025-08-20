@@ -2,7 +2,6 @@
 
 - README
 - prettier
-- fix editorconfig
 - fix scroll
 - email
 - easier customisation
