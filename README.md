@@ -5,7 +5,6 @@
 - fix scroll
 - easier customisation
 - strip comments from config file on production builds
-- dont take focus if highlighting text
 
 
 1. Copy `config.example.json` to `config.json` and configure the application as you desire. Fields beginning with `__comment` describe the related non-comment field.

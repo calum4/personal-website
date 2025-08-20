@@ -53,7 +53,7 @@ export class Command implements OnInit, OnDestroy {
 
   onClickEvent = (_event: MouseEvent) => {
     const element = document.getElementById("commandInput");
-    if (element !== null) {
+    if (element !== null && window.getSelection()?.toString() === "") {
       element.focus();
     }
   }
