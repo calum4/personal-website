@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Command } from './command';
-import {COMMANDS} from './command.model';
+import {DEFAULT_COMMANDS} from "../core/services/commands.service";
 
 const SKIP_COMMANDS = ["clear", "", "reset"];
 
@@ -23,28 +23,28 @@ describe('Command', () => {
     expect(component).toBeTruthy();
   });
 
-  it("template commands should handle all commands", async () => {
+  it("template commands should handle all default commands", async () => {
     const templateCommands = await getHtmlTemplateCommands();
 
-    for (const command of COMMANDS) {
+    for (const command of DEFAULT_COMMANDS) {
       if (SKIP_COMMANDS.includes(command)) continue;
 
       if (!templateCommands.includes(command)) {
-        throw new Error(`template commands does not contain command "${command}"`);
+        throw new Error(`template commands does not contain default command "${command}"`);
       }
     }
 
     expect(true).toBeTrue();
   });
 
-  it("commands should handle all template commands", async () => {
+  it("default commands should handle all template commands", async () => {
     const templateCommands = await getHtmlTemplateCommands();
 
     for (const command of templateCommands) {
       if (SKIP_COMMANDS.includes(command)) continue;
 
-      if (!COMMANDS.includes(command)) {
-        throw new Error(`COMMANDS does not contain template command "${command}"`);
+      if (!DEFAULT_COMMANDS.includes(command)) {
+        throw new Error(`default commands do not contain template command "${command}"`);
       }
     }
 

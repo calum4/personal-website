@@ -1,8 +1,9 @@
 import {Component, ElementRef, inject, Input, OnDestroy, OnInit, signal, viewChild} from "@angular/core";
 import {CommandHistoryStore} from '../store/command-history.store';
 import { repository } from "../../../package.json";
-import {CommandModel, COMMANDS} from './command.model';
-import {email} from "../../../config.json";
+import {CommandModel} from './command.model';
+import config from "../../../config.json";
+import {CommandsService, CommandStatus} from "../core/services/commands.service";
 
 @Component({
   selector: 'app-command',
@@ -14,11 +15,17 @@ export class Command implements OnInit, OnDestroy {
   @Input() command: CommandModel|null = null;
 
   readonly store = inject(CommandHistoryStore);
-  readonly COMMANDS = COMMANDS;
+  readonly commandsService = inject(CommandsService);
   readonly repoUrl = repository.url;
 
   readonly replayIndex = signal<number|null>(null);
   readonly hiddenEmailComponent = viewChild<ElementRef<HTMLDivElement>>("hiddenEmail");
+
+  readonly githubUrl = new URL(config.defaultCommands.github.profileUrl);
+  readonly linkedInUrl = new URL(config.defaultCommands.linkedin.profileUrl);
+
+  readonly config = config;
+  readonly CommandStatus = CommandStatus;
 
   ngOnInit() {
     if (this.command === null) {
@@ -125,7 +132,7 @@ export class Command implements OnInit, OnDestroy {
   similarCommands(command: string): string[] {
     const similar = [];
 
-    for (const name of COMMANDS) {
+    for (const name of this.commandsService.enabledCommands()) {
       if (name.startsWith(command)) {
         similar.push(name);
       }
@@ -138,7 +145,10 @@ export class Command implements OnInit, OnDestroy {
     const element = this.hiddenEmailComponent()?.nativeElement;
     if (element === undefined) return;
 
-    const content = email.username + "<span class='block-bots' aria-hidden='true'>david@example.org</span>" + "<!-- damn scrapers dave@example.com -->&commat;<!-- abcdefg&commat;example.com -->" + email.domainLevels.join(".<!-- dufhi -->");
+    const content = config.defaultCommands.email.username
+      + "<span class='block-bots' aria-hidden='true'>david@example.org</span>"
+      + "<!-- damn scrapers dave@example.com -->&commat;<!-- abcdefg&commat;example.com -->"
+      + config.defaultCommands.email.domainLevels.join(".<!-- dufhi -->");
 
     element.setHTMLUnsafe(`Email me at -> ${content}`);
   }

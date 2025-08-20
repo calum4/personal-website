@@ -1,26 +1,24 @@
 <div class="terminal-container">
   <div class="content">
     @if (!store.hasBeenCleared()) {
-      <div class="auth">
-        login as: Calum<br>
-        Authenticating with public key "ed25519-key-personal-website"
-      </div>
+      @if (config.simulatedAuth.enabled) {
+        <div class="auth">
+          login as: {{ config.username }}<br>
+          Authenticating with public key "ed25519-key-personal-website"
+        </div>
 
-      <br>
+        <br>
+      }
 
-
-<pre class="banner">
- ██████╗ █████╗ ██╗     ██╗   ██╗███╗   ███╗███╗   ███╗   ██████╗ ███████╗██╗   ██╗
-██╔════╝██╔══██╗██║     ██║   ██║████╗ ████║████╗ ████║   ██╔══██╗██╔════╝██║   ██║
-██║     ███████║██║     ██║   ██║██╔████╔██║██╔████╔██║   ██║  ██║█████╗  ██║   ██║
-██║     ██╔══██║██║     ██║   ██║██║╚██╔╝██║██║╚██╔╝██║   ██║  ██║██╔══╝  ╚██╗ ██╔╝
-╚██████╗██║  ██║███████╗╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║██╗██████╔╝███████╗ ╚████╔╝
- ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚═╝╚═════╝ ╚══════╝  ╚═══╝
-</pre>
+      @if (config.banner.enabled) {
+        <pre class="banner">{{ config.banner.content }}</pre>
+      }
 
       <div class="welcome">
-        <span>Welcome to calumm.dev v{{version}}</span>
-        <br>
+        @if (config.welcome.enabled) {
+          <span>{{ config.welcome.content }} - v{{version}}</span>
+          <br>
+        }
         <span>Type "help" to see a list of available commands</span>
         <br>
         <br>

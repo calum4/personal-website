@@ -1,14 +1,55 @@
 {
-  "__comment_email__": "Break down the email address into parts to hopefully avoid spam crawling",
-  "email": {
-    "__comment_username__": "Username portion the email address, eg 'john.doe@example.com' would be 'john.doe'",
-    "username": "john.doe",
+  "username": "guest",
+  "hostname": "localhost",
 
-    "__comment_domainLevels__": "Domain levels, eg 'email.example.com' would be ['email', 'example', 'com']",
-    "domainLevels": [
-      "email",
-      "example",
-      "com"
-    ]
+  "simulatedAuth": {
+    "__comment__": "Simulated SSH Pubkey Auth presented at the top of the terminal",
+
+    "enabled": true
+  },
+
+  "banner": {
+    "enabled": true,
+
+    "__comment_content__": "A banner at the top of terminal after the simulatedAuth. I used an ascii art representation of my domain which I generated with -> https://patorjk.com/software/taag/?p=display&f=ANSI%20Shadow&t=calumm.dev&x=none",
+    "content": " ██████╗ █████╗ ██╗     ██╗   ██╗███╗   ███╗███╗   ███╗   ██████╗ ███████╗██╗   ██╗\n██╔════╝██╔══██╗██║     ██║   ██║████╗ ████║████╗ ████║   ██╔══██╗██╔════╝██║   ██║\n██║     ███████║██║     ██║   ██║██╔████╔██║██╔████╔██║   ██║  ██║█████╗  ██║   ██║\n██║     ██╔══██║██║     ██║   ██║██║╚██╔╝██║██║╚██╔╝██║   ██║  ██║██╔══╝  ╚██╗ ██╔╝\n╚██████╗██║  ██║███████╗╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║██╗██████╔╝███████╗ ╚████╔╝\n ╚═════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚═╝╚═════╝ ╚══════╝  ╚═══╝"
+  },
+
+  "welcome": {
+    "enabled": true,
+    "content": "Welcome to personal-website"
+  },
+
+  "defaultCommands": {
+    "whoami": {
+      "enabled": true,
+      "content": "Hi! I'm John Doe, a Software Developer with a 100 years of experience in a 5 year old programming language"
+    },
+
+    "github": {
+      "enabled": true,
+      "profileUrl": "https://github.com/Calum4"
+    },
+
+    "linkedin": {
+      "enabled": false,
+      "profileUrl": "https://linkedin.com/in/"
+    },
+
+    "email": {
+      "__comment__": "Break down the email address into parts to hopefully avoid spam crawling",
+
+      "enabled": true,
+
+      "__comment_username__": "Username portion of the email address, eg 'john.doe@example.com' would be 'john.doe'",
+      "username": "john.doe",
+
+      "__comment_domainLevels__": "Domain levels, eg 'email.example.com' would be ['email', 'example', 'com']",
+      "domainLevels": [
+        "email",
+        "example",
+        "com"
+      ]
+    }
   }
 }
