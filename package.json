@@ -2,15 +2,17 @@
   "name": "personal-website",
   "version": "0.0.0",
   "repository": {
+    "type": "git",
     "url": "https://github.com/calum4/personal-website"
   },
   "license": "(MIT OR Apache-2.0)",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run strip-config && ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "strip-config": "npm --prefix ./bin/strip-config-comments/ run start -- --input=../../config.json --output=./dist/config.stripped.json"
   },
   "prettier": {
     "printWidth": 100,

@@ -3,7 +3,6 @@
 - README
 - prettier
 - fix scroll
-- strip comments from config file on production builds
 
 
 1. Copy `config.example.json` to `config.json` and configure the application as you desire. Fields beginning with `__comment` describe the related non-comment field.

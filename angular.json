@@ -42,7 +42,13 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+                {
+                  "replace": "./config.json",
+                  "with": "./bin/strip-config-comments/dist/config.stripped.json"
+                }
+              ]
             },
             "development": {
               "optimization": false,

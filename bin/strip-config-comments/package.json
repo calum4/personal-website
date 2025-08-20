@@ -1,0 +1,19 @@
+{
+  "name": "strip-config-comments",
+  "version": "0.0.0",
+  "description": "strip comments from the config.json file",
+  "scripts": {
+    "start": "tsc && node dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Calum4/personal-website/bin/strip-config-comments"
+  },
+  "author": "Calum4 <calum@calumm.dev>",
+  "license": "(MIT OR Apache-2.0)",
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "@types/node": "^24.3.0"
+  },
+  "type": "module"
+}
