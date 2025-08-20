@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Terminal } from './terminal/terminal';
 import {Title} from "@angular/platform-browser";
-import {pageTitle} from "../../config.json";
+import {ConfigService} from "./core/services/config.service";
 
 @Component({
   selector: 'app-root',
@@ -12,6 +12,6 @@ import {pageTitle} from "../../config.json";
 })
 export class App {
   constructor(private readonly titleService: Title) {
-    this.titleService.setTitle(pageTitle);
+    this.titleService.setTitle(ConfigService.Config.pageTitle);
   }
 }

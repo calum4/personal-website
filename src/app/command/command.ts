@@ -2,8 +2,8 @@ import {Component, ElementRef, inject, Input, OnDestroy, OnInit, signal, viewChi
 import {CommandHistoryStore} from '../store/command-history.store';
 import { repository } from "../../../package.json";
 import {CommandModel} from './command.model';
-import config from "../../../config.json";
 import {CommandsService, CommandStatus} from "../core/services/commands.service";
+import {ConfigService} from "../core/services/config.service";
 
 @Component({
   selector: 'app-command',
@@ -14,6 +14,9 @@ import {CommandsService, CommandStatus} from "../core/services/commands.service"
 export class Command implements OnInit, OnDestroy {
   @Input() command: CommandModel|null = null;
 
+  readonly config = ConfigService.Config;
+  readonly CommandStatus = CommandStatus;
+
   readonly store = inject(CommandHistoryStore);
   readonly commandsService = inject(CommandsService);
   readonly repoUrl = repository.url;
@@ -21,11 +24,8 @@ export class Command implements OnInit, OnDestroy {
   readonly replayIndex = signal<number|null>(null);
   readonly hiddenEmailComponent = viewChild<ElementRef<HTMLDivElement>>("hiddenEmail");
 
-  readonly githubUrl = new URL(config.defaultCommands.github.profileUrl);
-  readonly linkedInUrl = new URL(config.defaultCommands.linkedin.profileUrl);
-
-  readonly config = config;
-  readonly CommandStatus = CommandStatus;
+  readonly githubUrl = new URL(this.config.defaultCommands.github.profileUrl);
+  readonly linkedInUrl = new URL(this.config.defaultCommands.linkedin.profileUrl);
 
   ngOnInit() {
     if (this.command === null) {
@@ -145,10 +145,10 @@ export class Command implements OnInit, OnDestroy {
     const element = this.hiddenEmailComponent()?.nativeElement;
     if (element === undefined) return;
 
-    const content = config.defaultCommands.email.username
+    const content = this.config.defaultCommands.email.username
       + "<span class='block-bots' aria-hidden='true'>david@example.org</span>"
       + "<!-- damn scrapers dave@example.com -->&commat;<!-- abcdefg&commat;example.com -->"
-      + config.defaultCommands.email.domainLevels.join(".<!-- dufhi -->");
+      + this.config.defaultCommands.email.domainLevels.join(".<!-- dufhi -->");
 
     element.setHTMLUnsafe(`Email me at -> ${content}`);
   }

@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import { Command } from '../command/command';
 import { version, repository } from "../../../package.json";
 import {CommandHistoryStore} from '../store/command-history.store';
-import config from "../../../config.json";
+import {ConfigService} from "../core/services/config.service";
 
 @Component({
   selector: 'app-terminal',
@@ -17,5 +17,5 @@ export class Terminal {
   readonly version: string = version;
   readonly repoUrl = repository.url;
 
-  readonly config = config;
+  readonly config = ConfigService.Config;
 }

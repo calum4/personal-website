@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import config from "../../../../config.json";
+import {ConfigService, CustomCommand} from "./config.service";
 
 export const DEFAULT_COMMANDS = [
   "help",
@@ -28,14 +28,14 @@ export class CommandsService {
       const commands: string[] = [];
 
       for (const command of DEFAULT_COMMANDS) {
-        const commandConfig: {enabled?: boolean} = config.defaultCommands[command as keyof typeof config.defaultCommands];
+        const commandConfig: {enabled?: boolean} = ConfigService.Config.defaultCommands[command as keyof typeof ConfigService.Config.defaultCommands];
 
         if (!commandConfig || commandConfig?.enabled) {
           commands.push(command);
         }
       }
 
-      for (const [name, data] of Object.entries(config.customCommands)) {
+      for (const [name, data] of Object.entries(ConfigService.Config.customCommands)) {
         if (!data.enabled) continue;
 
         commands.push(name);
@@ -50,15 +50,15 @@ export class CommandsService {
   commandStatus(command: string): CommandStatus {
     if (this.enabledCommands().includes(command)) {
       return CommandStatus.Enabled;
-    } else if (DEFAULT_COMMANDS.includes(command) || config.defaultCommands[command as keyof typeof config.defaultCommands]) {
+    } else if (DEFAULT_COMMANDS.includes(command) || ConfigService.Config.defaultCommands[command as keyof typeof ConfigService.Config.defaultCommands]) {
       return CommandStatus.Disabled;
     } else {
       return CommandStatus.Unknown;
     }
   }
 
-  customCommand(command: string): null | typeof config.customCommands[keyof typeof config.customCommands] {
-    const data = config.customCommands[command as keyof typeof config.customCommands];
+  customCommand(command: string): null | CustomCommand {
+    const data = ConfigService.Config.customCommands[command];
     if (!data) return null;
     return data;
   }
