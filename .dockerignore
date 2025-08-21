@@ -1,0 +1,27 @@
+# Ignore everything
+*
+
+# Allow files and directories
+!/bin/
+!/nginx/
+!/public/
+!/src/
+!/angular.json
+!/config.json
+!/package.json
+!/package-lock.json
+!/tsconfig*.json
+
+# Ignore unnecessary files inside allowed directories
+# This should go after the allowed directories
+**/*~
+**/*.log
+**/.DS_Store
+**/Thumbs.db
+**/.angular
+**/.git
+**/.idea
+**/.vscode
+**/dist/
+**/node_modules/
+**/build/

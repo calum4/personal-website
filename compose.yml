@@ -1,0 +1,8 @@
+services:
+  personal-site:
+    container_name: personal-site
+    build: .
+    ports:
+      - "443:443"
+    restart: unless-stopped
+    # TODO - Security Hardening
