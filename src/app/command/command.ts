@@ -30,12 +30,11 @@ export class Command implements OnInit, OnDestroy {
   readonly config = this.configService.config();
   readonly CommandStatus = CommandStatus;
 
-  readonly repoUrl = repository.url;
-
   readonly replayIndex = signal<number|null>(null);
   readonly hiddenEmailComponent = viewChild<ElementRef<HTMLDivElement>>("hiddenEmail");
 
-  readonly githubUrl = new URL(this.config.defaultCommands.github.profileUrl);
+  readonly repoUrl = new URL(repository.url);
+  readonly githubProfileUrl = new URL(this.config.defaultCommands.github.profileUrl);
   readonly linkedInUrl = new URL(this.config.defaultCommands.linkedin.profileUrl);
 
   ngOnInit() {

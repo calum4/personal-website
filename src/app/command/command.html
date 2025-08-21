@@ -29,13 +29,13 @@
         {{config.defaultCommands.whoami.content}}
       }
       @case ("github") {
-        You can find my GitHub profile here -> <a [href]="githubUrl.href" target="_blank">{{githubUrl.host}}{{githubUrl.pathname}}</a>
+        You can find my GitHub profile here -> <a [href]="githubProfileUrl.href" target="_blank">{{githubProfileUrl.host}}{{githubProfileUrl.pathname}}</a>
       }
       @case ("linkedin") {
         You can find my LinkedIn here -> <a [href]="linkedInUrl.href" target="_blank">{{linkedInUrl.host}}{{linkedInUrl.pathname}}</a>
       }
       @case ("repo") {
-        You can find the Git repository for this website <a [href]="repoUrl" target="_blank">here</a>
+        You can find the Git repository for this website here -> <a [href]="repoUrl.href" target="_blank">{{repoUrl.host}}{{repoUrl.pathname}}</a>
       }
       @case ("acknowledgement") {
         Special thanks to <a href="https://github.com/m4tt72" target="_blank">m4tt72</a> for inspiring the design
