@@ -1,4 +1,13 @@
-import {Component, ElementRef, inject, Input, OnDestroy, OnInit, signal, viewChild} from "@angular/core";
+import {
+  Component,
+  ElementRef,
+  inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  signal,
+  viewChild
+} from "@angular/core";
 import {CommandHistoryStore} from '../store/command-history.store';
 import { repository } from "../../../package.json";
 import {CommandModel} from './command.model';
@@ -32,11 +41,6 @@ export class Command implements OnInit, OnDestroy {
   ngOnInit() {
     if (this.command === null) {
       document.addEventListener("click", this.onClickEvent);
-
-      const element = document.getElementById("commandInput");
-      if (element !== null) {
-        element.focus();
-      }
     }
   }
 

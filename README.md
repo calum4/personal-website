@@ -2,7 +2,6 @@
 
 - README
 - prettier
-- fix scroll
 - Add test for email base64 conversions
 
 
