@@ -1,6 +1,6 @@
 services:
-  personal-site:
-    container_name: personal-site
+  personal-website:
+    container_name: personal-website
     build: .
     ports:
       - "443:443"

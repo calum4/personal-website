@@ -29,4 +29,6 @@ RUN apk add --no-cache openssl
 COPY ./nginx/default.conf.template /etc/nginx/templates/default.conf.template
 COPY ./nginx/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 COPY ./nginx/5-ssl.sh /docker-entrypoint.d/5-ssl.sh
-COPY --from=builder /home/personal-website/dist/personal-website/browser/ ./
+COPY --chown=nginx:nginx --from=builder /home/personal-website/dist/personal-website/browser/ ./
+
+RUN chmod +x /docker-entrypoint.d/5-ssl.sh
