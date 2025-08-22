@@ -1,25 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Command } from './command';
-import {DEFAULT_COMMANDS} from "../core/services/commands.service";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { Command } from "./command";
+import { DEFAULT_COMMANDS } from "../core/services/commands.service";
 
 const SKIP_COMMANDS = ["clear", "", "reset"];
 
-describe('Command', () => {
+describe("Command", () => {
   let component: Command;
   let fixture: ComponentFixture<Command>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Command]
-    })
-    .compileComponents();
+      imports: [Command],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Command);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 

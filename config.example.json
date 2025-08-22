@@ -48,11 +48,7 @@
       "username": "john.doe",
 
       "__comment_domainLevels__": "Domain levels, eg 'email.example.com' would be ['email', 'example', 'com']",
-      "domainLevels": [
-        "email",
-        "example",
-        "com"
-      ]
+      "domainLevels": ["email", "example", "com"]
     }
   },
 

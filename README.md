@@ -1,10 +1,8 @@
 # TODO
 
 - README
-- prettier
 - Add test for email base64 conversions
 - Improve usability on mobile
-
 
 1. Copy `config.example.json` to `config.json` and configure the application as you desire. Fields beginning with `__comment` describe the related non-comment field.
 

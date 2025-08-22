@@ -3,11 +3,11 @@
     @if (!store.hasBeenCleared()) {
       @if (config.simulatedAuth.enabled) {
         <div class="auth">
-          login as: {{ config.username }}<br>
+          login as: {{ config.username }}<br />
           Authenticating with public key "ed25519-key-personal-website"
         </div>
 
-        <br>
+        <br />
       }
 
       @if (config.banner.enabled) {
@@ -16,19 +16,19 @@
 
       <div class="welcome">
         @if (config.welcome.enabled) {
-          <span>{{ config.welcome.content }} - v{{version}}</span>
-          <br>
+          <span>{{ config.welcome.content }} - v{{ version }}</span>
+          <br />
         }
         <span>Type "help" to see a list of available commands</span>
-        <br>
-        <br>
+        <br />
+        <br />
         <span>
           ** This website is open-source, check it out
           <a [href]="repoUrl" target="_blank">here</a> **
         </span>
       </div>
 
-      <br>
+      <br />
     }
 
     @for (command of store.history(); track command.id) {

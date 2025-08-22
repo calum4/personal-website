@@ -6,19 +6,19 @@ let outputFile: string | null = null;
 for (const arg of process.argv) {
   if (!arg.startsWith("--")) continue;
 
-   const [name, value] = arg.substring(2).split("=");
+  const [name, value] = arg.substring(2).split("=");
 
-   switch (name) {
-     case "input": {
-       inputFile = value;
-       break;
-     }
+  switch (name) {
+    case "input": {
+      inputFile = value;
+      break;
+    }
 
-     case "output": {
-       outputFile = value;
-       break;
-     }
-   }
+    case "output": {
+      outputFile = value;
+      break;
+    }
+  }
 }
 
 if (inputFile === null || outputFile === null) throw new Error("missing arguments");
@@ -49,4 +49,4 @@ for (let i = 0; i < json.defaultCommands.email.domainLevels.length; i++) {
   json.defaultCommands.email.domainLevels[i] = btoa(json.defaultCommands.email.domainLevels[i]);
 }
 
-fs.writeFileSync(outputFile, JSON.stringify(json), {encoding: "utf8"});
+fs.writeFileSync(outputFile, JSON.stringify(json), { encoding: "utf8" });

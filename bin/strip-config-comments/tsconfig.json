@@ -4,9 +4,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/",
-    "types": [
-      "node",
-    ],
+    "types": ["node"],
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -19,8 +17,6 @@
     "target": "ES2022",
     "module": "preserve"
   },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [],
+  "include": ["src/**/*.ts"],
+  "exclude": []
 }

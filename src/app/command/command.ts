@@ -6,22 +6,22 @@ import {
   OnDestroy,
   OnInit,
   signal,
-  viewChild
+  viewChild,
 } from "@angular/core";
-import {CommandHistoryStore} from '../store/command-history.store';
+import { CommandHistoryStore } from "../store/command-history.store";
 import { repository } from "../../../package.json";
-import {CommandModel} from './command.model';
-import {CommandsService, CommandStatus} from "../core/services/commands.service";
-import {ConfigService} from "../core/services/config.service";
+import { CommandModel } from "./command.model";
+import { CommandsService, CommandStatus } from "../core/services/commands.service";
+import { ConfigService } from "../core/services/config.service";
 
 @Component({
-  selector: 'app-command',
+  selector: "app-command",
   imports: [],
-  templateUrl: './command.html',
-  styleUrl: './command.css'
+  templateUrl: "./command.html",
+  styleUrl: "./command.css",
 })
 export class Command implements OnInit, OnDestroy {
-  @Input() command: CommandModel|null = null;
+  @Input() command: CommandModel | null = null;
 
   readonly store = inject(CommandHistoryStore);
   readonly commandsService = inject(CommandsService);
@@ -30,7 +30,7 @@ export class Command implements OnInit, OnDestroy {
   readonly config = this.configService.config();
   readonly CommandStatus = CommandStatus;
 
-  readonly replayIndex = signal<number|null>(null);
+  readonly replayIndex = signal<number | null>(null);
   readonly hiddenEmailComponent = viewChild<ElementRef<HTMLDivElement>>("hiddenEmail");
 
   readonly repoUrl = new URL(repository.url);
@@ -61,7 +61,7 @@ export class Command implements OnInit, OnDestroy {
     if (element !== null && window.getSelection()?.toString() === "") {
       element.focus();
     }
-  }
+  };
 
   onKeyDownEvent(event: KeyboardEvent) {
     const element = document.getElementById("commandInput") as HTMLInputElement | null;
@@ -150,10 +150,11 @@ export class Command implements OnInit, OnDestroy {
     const element = this.hiddenEmailComponent()?.nativeElement;
     if (element === undefined) return;
 
-    const content = this.config.defaultCommands.email.username
-      + "<span class='block-bots' aria-hidden='true'>david@example.org</span>"
-      + "<!-- damn scrapers dave@example.com -->&commat;<!-- abcdefg&commat;example.com -->"
-      + this.config.defaultCommands.email.domainLevels.join(".<!-- dufhi -->");
+    const content =
+      this.config.defaultCommands.email.username +
+      "<span class='block-bots' aria-hidden='true'>david@example.org</span>" +
+      "<!-- damn scrapers dave@example.com -->&commat;<!-- abcdefg&commat;example.com -->" +
+      this.config.defaultCommands.email.domainLevels.join(".<!-- dufhi -->");
 
     element.setHTMLUnsafe(`Email me at -> ${content}`);
   }
