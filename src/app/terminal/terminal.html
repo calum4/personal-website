@@ -1,40 +1,42 @@
 <div class="terminal-container">
-  <div class="content" #content>
-    @if (!store.hasBeenCleared()) {
-      @if (config.simulatedAuth.enabled) {
-        <div class="auth">
-          login as: {{ config.username }}<br />
-          Authenticating with public key "ed25519-key-personal-website"
+  @if (config() !== undefined) {
+    <div class="content" #content>
+      @if (!store.hasBeenCleared()) {
+        @if (config()!.simulatedAuth.enabled) {
+          <div class="auth">
+            login as: {{ config()!.username }}<br />
+            Authenticating with public key "ed25519-key-personal-website"
+          </div>
+
+          <br />
+        }
+
+        @if (config()!.banner.enabled) {
+          <pre class="banner">{{ config()!.banner.content }}</pre>
+        }
+
+        <div class="welcome">
+          @if (config()!.welcome.enabled) {
+            <span>{{ config()!.welcome.content }} - v{{ version }}</span>
+            <br />
+          }
+          <span>Type "help" to see a list of available commands</span>
+          <br />
+          <br />
+          <span>
+            ** This website is open-source, check it out
+            <a [href]="repoUrl" target="_blank">here</a> **
+          </span>
         </div>
 
         <br />
       }
 
-      @if (config.banner.enabled) {
-        <pre class="banner">{{ config.banner.content }}</pre>
+      @for (command of store.history(); track command.id) {
+        <app-command [command]="command" />
       }
 
-      <div class="welcome">
-        @if (config.welcome.enabled) {
-          <span>{{ config.welcome.content }} - v{{ version }}</span>
-          <br />
-        }
-        <span>Type "help" to see a list of available commands</span>
-        <br />
-        <br />
-        <span>
-          ** This website is open-source, check it out
-          <a [href]="repoUrl" target="_blank">here</a> **
-        </span>
-      </div>
-
-      <br />
-    }
-
-    @for (command of store.history(); track command.id) {
-      <app-command [command]="command" />
-    }
-
-    <app-command />
-  </div>
+      <app-command />
+    </div>
+  }
 </div>

@@ -1,80 +1,82 @@
-<div class="command">
-  <div class="command-prefix-container">
-    <span class="text-accent-colour-3">{{ config.username }}</span>
-    <span class="text-accent-colour-4">&#64;</span>
-    <span class="text-accent-colour-2">{{ config.hostname }}</span>
-    <span class="text-accent-colour-4">:~$ </span>
+@if (config() !== undefined) {
+  <div class="command">
+    <div class="command-prefix-container">
+      <span class="text-accent-colour-3">{{ config()!.username }}</span>
+      <span class="text-accent-colour-4">&#64;</span>
+      <span class="text-accent-colour-2">{{ config()!.hostname }}</span>
+      <span class="text-accent-colour-4">:~$ </span>
+    </div>
+
+    <div class="command-input-container">
+      @if (command === null) {
+        <input
+          id="commandInput"
+          type="text"
+          name="command-label"
+          aria-label="Command Input"
+          (keydown)="onKeyDownEvent($event)"
+        />
+      } @else {
+        <span>{{ command.name }}</span>
+      }
+    </div>
   </div>
 
-  <div class="command-input-container">
-    @if (command === null) {
-      <input
-        id="commandInput"
-        type="text"
-        name="command-label"
-        aria-label="Command Input"
-        (keydown)="onKeyDownEvent($event)"
-      />
-    } @else {
-      <span>{{ command.name }}</span>
-    }
-  </div>
-</div>
-
-@if (command != null) {
-  @if (command.name === "") {
-    <!-- New Line -->
-  } @else if (command.suggestions !== undefined) {
-    {{ command.suggestions.join("  ") }}
-  } @else if (commandsService.commandStatus(command.name) == CommandStatus.Enabled) {
-    @switch (command.name) {
-      <!-- START COMMAND CHECK -->
-      @case ("help") {
-        Available Commands: {{ commandsService.enabledCommands().join(", ") }}
-      }
-      @case ("whoami") {
-        {{ config.defaultCommands.whoami.content }}
-      }
-      @case ("github") {
-        You can find my GitHub profile here ->
-        <a [href]="githubProfileUrl.href" target="_blank"
-          >{{ githubProfileUrl.host }}{{ githubProfileUrl.pathname }}</a
-        >
-      }
-      @case ("linkedin") {
-        You can find my LinkedIn here ->
-        <a [href]="linkedInUrl.href" target="_blank"
-          >{{ linkedInUrl.host }}{{ linkedInUrl.pathname }}</a
-        >
-      }
-      @case ("repo") {
-        You can find the Git repository for this website here ->
-        <a [href]="repoUrl.href" target="_blank">{{ repoUrl.host }}{{ repoUrl.pathname }}</a>
-      }
-      @case ("acknowledgement") {
-        Special thanks to <a href="https://github.com/m4tt72" target="_blank">m4tt72</a> for
-        inspiring the design
-      }
-      @case ("email") {
-        <div class="hidden-email" #hiddenEmail>
-          <u class="email-click-reveal" (click)="onEmailRevealClick($event)"
-            >Click to reveal my email address</u
-          >
-        </div>
-      }
-      @default {
-        @if (commandsService.customCommand(command.name)?.enabled ?? false) {
-          {{ commandsService.customCommand(command.name)!.content }}
-        } @else {
-          An unknown error occurred, please create an issue
-          <a [href]="repoUrl" target="_blank">here</a>
+  @if (command != null) {
+    @if (command.name === "") {
+      <!-- New Line -->
+    } @else if (command.suggestions !== undefined) {
+      {{ command.suggestions.join("  ") }}
+    } @else if (commandsService.commandStatus(command.name) == CommandStatus.Enabled) {
+      @switch (command.name) {
+        <!-- START COMMAND CHECK -->
+        @case ("help") {
+          Available Commands: {{ commandsService.enabledCommands().join(", ") }}
         }
+        @case ("whoami") {
+          {{ config()!.defaultCommands.whoami.content }}
+        }
+        @case ("github") {
+          You can find my GitHub profile here ->
+          <a [href]="githubProfileUrl().href" target="_blank"
+            >{{ githubProfileUrl().host }}{{ githubProfileUrl().pathname }}</a
+          >
+        }
+        @case ("linkedin") {
+          You can find my LinkedIn here ->
+          <a [href]="linkedInUrl().href" target="_blank"
+            >{{ linkedInUrl().host }}{{ linkedInUrl().pathname }}</a
+          >
+        }
+        @case ("repo") {
+          You can find the Git repository for this website here ->
+          <a [href]="repoUrl.href" target="_blank">{{ repoUrl.host }}{{ repoUrl.pathname }}</a>
+        }
+        @case ("acknowledgement") {
+          Special thanks to <a href="https://github.com/m4tt72" target="_blank">m4tt72</a> for
+          inspiring the design
+        }
+        @case ("email") {
+          <div class="hidden-email" #hiddenEmail>
+            <u class="email-click-reveal" (click)="onEmailRevealClick($event)"
+              >Click to reveal my email address</u
+            >
+          </div>
+        }
+        @default {
+          @if (commandsService.customCommand(command.name)?.enabled ?? false) {
+            {{ commandsService.customCommand(command.name)!.content }}
+          } @else {
+            An unknown error occurred, please create an issue
+            <a [href]="repoUrl" target="_blank">here</a>
+          }
+        }
+        <!-- END COMMAND CHECK -->
       }
-      <!-- END COMMAND CHECK -->
+    } @else if (commandsService.commandStatus(command.name) == CommandStatus.Disabled) {
+      Permission denied: unable to run the command '{{ command.name }}'
+    } @else {
+      {{ command.name }}: command not found, type "help" for a list of available commands
     }
-  } @else if (commandsService.commandStatus(command.name) == CommandStatus.Disabled) {
-    Permission denied: unable to run the command '{{ command.name }}'
-  } @else {
-    {{ command.name }}: command not found, type "help" for a list of available commands
   }
 }

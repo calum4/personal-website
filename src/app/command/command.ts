@@ -1,5 +1,6 @@
 import {
   Component,
+  computed,
   ElementRef,
   inject,
   Input,
@@ -13,10 +14,10 @@ import { repository } from "../../../package.json";
 import { CommandModel } from "./command.model";
 import { CommandsService, CommandStatus } from "../core/services/commands.service";
 import { ConfigService } from "../core/services/config.service";
+import { toSignal } from "@angular/core/rxjs-interop";
 
 @Component({
   selector: "app-command",
-  imports: [],
   templateUrl: "./command.html",
   styleUrl: "./command.css",
 })
@@ -27,15 +28,27 @@ export class Command implements OnInit, OnDestroy {
   readonly commandsService = inject(CommandsService);
   readonly configService = inject(ConfigService);
 
-  readonly config = this.configService.config();
+  readonly config = toSignal(this.configService.config$);
   readonly CommandStatus = CommandStatus;
 
   readonly replayIndex = signal<number | null>(null);
   readonly hiddenEmailComponent = viewChild<ElementRef<HTMLDivElement>>("hiddenEmail");
 
   readonly repoUrl = new URL(repository.url);
-  readonly githubProfileUrl = new URL(this.config.defaultCommands.github.profileUrl);
-  readonly linkedInUrl = new URL(this.config.defaultCommands.linkedin.profileUrl);
+
+  readonly githubProfileUrl = computed(() => {
+    const config = this.config();
+    if (config === undefined) return new URL("https://github.com");
+
+    return new URL(config.defaultCommands.github.profileUrl);
+  });
+
+  readonly linkedInUrl = computed(() => {
+    const config = this.config();
+    if (config === undefined) return new URL("https://linkedin.com");
+
+    return new URL(config.defaultCommands.linkedin.profileUrl);
+  });
 
   ngOnInit() {
     if (this.command === null) {
@@ -148,13 +161,14 @@ export class Command implements OnInit, OnDestroy {
 
   onEmailRevealClick(_event: MouseEvent) {
     const element = this.hiddenEmailComponent()?.nativeElement;
-    if (element === undefined) return;
+    const config = this.config();
+    if (element === undefined || config === undefined) return;
 
     const content =
-      this.config.defaultCommands.email.username +
+      config.defaultCommands.email.username +
       "<span class='block-bots' aria-hidden='true'>david@example.org</span>" +
       "<!-- damn scrapers dave@example.com -->&commat;<!-- abcdefg&commat;example.com -->" +
-      this.config.defaultCommands.email.domainLevels.join(".<!-- dufhi -->");
+      config.defaultCommands.email.domainLevels.join(".<!-- dufhi -->");
 
     element.setHTMLUnsafe(`Email me at -> ${content}`);
   }

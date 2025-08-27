@@ -3,6 +3,7 @@ import { RouterOutlet } from "@angular/router";
 import { Terminal } from "./terminal/terminal";
 import { Title } from "@angular/platform-browser";
 import { ConfigService } from "./core/services/config.service";
+import { take } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -15,6 +16,8 @@ export class App implements OnInit {
   readonly configService = inject(ConfigService);
 
   ngOnInit() {
-    this.titleService.setTitle(this.configService.config().pageTitle);
+    this.configService.config$.pipe(take(1)).subscribe((config) => {
+      this.titleService.setTitle(config.pageTitle);
+    });
   }
 }
