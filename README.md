@@ -20,6 +20,18 @@
 
 The full changelog can be found at [CHANGELOG.md](CHANGELOG.md)
 
+## [1.0.0]
+
+### Added
+
+- Terminal style website
+- Default commands including whoami, github, linkedin, email, clear, reset, help
+- Commands can be customised using `config.json`, see [`config.example.json`](config.example.json)
+- Custom commands defined in the same config
+- Command completion with tab
+- Command history with up/down arrow keys
+- Deployable with Docker
+
 ## Usage
 
 ### Docker (Recommended)
