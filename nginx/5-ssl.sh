@@ -2,10 +2,8 @@
 
 set -e
 
-if [ ! -e .ssl-created ]
+if [ ! -e /etc/ssl/private/personal-website.key ] || [ ! -e /etc/ssl/certs/personal-website.crt ]
 then
-  openssl req -x509 -nodes -days 5475 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt -batch
+  openssl req -x509 -nodes -days 5475 -newkey rsa:2048 -keyout /etc/ssl/private/personal-website.key -out /etc/ssl/certs/personal-website.crt -batch
   openssl dhparam -dsaparam -out /etc/nginx/dhparam.pem 4096
-
-  touch .ssl-created
 fi

@@ -22,7 +22,7 @@ The full changelog can be found at [CHANGELOG.md](CHANGELOG.md)
 
 ## Usage
 
-### Docker Behind Reverse Proxy (Recommended)
+### Docker (Recommended)
 
 1. Clone the repository
 2. Copy `config.example.json` to `config.json` and configure as you desire. Fields beginning with `__comment` describe
@@ -30,6 +30,26 @@ The full changelog can be found at [CHANGELOG.md](CHANGELOG.md)
 3. Run the container with Docker Compose `docker compose up -d --build`.
 4. The container will now be bound to `127.0.0.1:443` using a self-signed certificate generated on first start-up.
 5. You can now place the container behind a reverse proxy such as Nginx.
+
+<details>
+  <summary>Bring your own cert</summary>
+
+If you wish to use your own certificate instead of using a self-signed, that is possible.
+
+The startup script [`nginx/5-ssl.sh`](nginx/5-ssl.sh) checks for the presence of both:
+
+- `/etc/ssl/private/personal-website.key`
+- `/etc/ssl/certs/personal-website.crt`
+
+Bind mount your cert and private key to these locations and Nginx will use your cert.
+
+</details>
+
+#### Environment Variables
+
+| Name                | Description                                                                                                                                                                                                           |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NGINX_SERVER_NAME` | Used in the Nginx configuration template to respond to the correct server name. By default will respond to all requests. For more information view the [Nginx wiki](https://nginx.org/en/docs/http/server_names.html) |
 
 ### Build and deploy manually
 

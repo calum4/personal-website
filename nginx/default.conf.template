@@ -13,8 +13,8 @@ server {
 
     include snippets/ssl-params.conf;
 
-    ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
-    ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+    ssl_certificate /etc/ssl/certs/personal-website.crt;
+    ssl_certificate_key /etc/ssl/private/personal-website.key;
 
     gzip on;
     gzip_vary on;
