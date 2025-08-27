@@ -1,0 +1,59 @@
+name: CI # Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    name: Test Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "22.x"
+          cache: "npm"
+
+      - run: npm install -g @angular/cli
+      - run: npm ci
+      - run: ng test --no-watch --no-progress --browsers=ChromeHeadless
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "22.x"
+          cache: "npm"
+
+      - run: npm install -g @angular/cli
+      - run: npm ci
+
+      - run: cp config.example.json config.json
+      - run: npm run build
+
+  formatting:
+    name: Check Formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "22.x"
+          cache: "npm"
+
+      - run: npm ci
+
+      - run: cp config.example.json config.json
+      - run: npx prettier --check .
