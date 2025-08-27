@@ -21,7 +21,7 @@ import { toSignal } from "@angular/core/rxjs-interop";
   templateUrl: "./command.html",
   styleUrl: "./command.css",
 })
-export class Command implements OnInit, OnDestroy 
+export class Command implements OnInit, OnDestroy {
   @Input() command: CommandModel | null = null
 
   readonly store = inject(CommandHistoryStore);
