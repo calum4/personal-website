@@ -16,6 +16,12 @@
   <a href="#contributing">Contributing</a>
 </p>
 
+## Overview
+
+A customisable terminal-style website, intended to act as a portfolio.
+
+![image](assets/preview.gif)
+
 ## Changelog
 
 The full changelog can be found at [CHANGELOG.md](CHANGELOG.md)
@@ -26,6 +32,7 @@ The full changelog can be found at [CHANGELOG.md](CHANGELOG.md)
 
 - Terminal style website
 - Default commands including whoami, github, linkedin, email, clear, reset, help
+- [Heavily obfuscated email to avoid email scrapers](https://github.com/calum4/personal-website/commit/fff810ac851b2622fe8617e3c4942e86ba5f4d46)
 - Commands can be customised using `config.json`, see [`config.example.json`](config.example.json)
 - Custom commands defined in the same config
 - Command completion with tab
@@ -89,3 +96,7 @@ for inclusion in the work by you, as defined in the Apache-2.0 license, shall be
 dual licensed as above, without any additional terms or conditions.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Acknowledgement
+
+Special thanks to [m4tt72](https://github.com/m4tt72/terminal) for inspiring the design.
