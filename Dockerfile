@@ -40,6 +40,6 @@ WORKDIR /usr/share/personal-website/html
 
 ENV NGINX_ENVSUBST_OUTPUT_DIR=/tmp/nginx/conf.d
 
-COPY ./nginx/default.conf.template /etc/nginx/templates/default.conf.template
-COPY ./nginx/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
-COPY --from=builder /home/personal-website/dist/personal-website/browser/ ./
+COPY --chown=nginx:nginx ./nginx/default.conf.template /etc/nginx/templates/default.conf.template
+COPY --chown=nginx:nginx ./nginx/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
+COPY --chown=nginx:nginx --from=builder /home/personal-website/dist/personal-website/browser/ ./
