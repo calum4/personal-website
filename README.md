@@ -1,67 +1,59 @@
-# TODO
+<h1 align="center">
+  <br>
+  Personal Website
+  <br>
+</h1>
 
-- README
-- Add test for email base64 conversions
-- Improve usability on mobile
+<h4 align="center"></h4>
 
-1. Copy `config.example.json` to `config.json` and configure the application as you desire. Fields beginning with `__comment` describe the related non-comment field.
+<p align="center">
+</p>
 
-# PersonalWebsite
+<p align="center">
+  <a href="#changelog">Changelog</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#license">License</a> •
+  <a href="#contributing">Contributing</a>
+</p>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.6.
+## Changelog
 
-## Development server
+The full changelog can be found at [CHANGELOG.md](CHANGELOG.md)
 
-To start a local development server, run:
+## Usage
 
-```bash
-ng serve
-```
+### Docker Behind Reverse Proxy (Recommended)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+1. Clone the repository
+2. Copy `config.example.json` to `config.json` and configure as you desire. Fields beginning with `__comment` describe
+   the related non-comment field.
+3. Run the container with Docker Compose `docker compose up -d --build`.
+4. The container will now be bound to `127.0.0.1:443` using a self-signed certificate generated on first start-up.
+5. You can now place the container behind a reverse proxy such as Nginx.
 
-## Code scaffolding
+### Build and deploy manually
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. Clone the repository
+2. Copy `config.example.json` to `config.json` and configure as you desire. Fields beginning with `__comment` describe
+   the related non-comment field.
+3. Install dependencies, `npm install`
+4. Deploy `dist/personal-website/browser` anywhere you wish.
 
-```bash
-ng generate component component-name
-```
+## License
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Licensed under either of
 
-```bash
-ng generate --help
-```
+- Apache License, Version 2.0
+  ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
+- MIT license
+  ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
 
-## Building
+at your option.
 
-To build the project run:
+## Contributing
 
-```bash
-ng build
-```
+Unless you explicitly state otherwise, any contribution intentionally submitted
+for inclusion in the work by you, as defined in the Apache-2.0 license, shall be
+dual licensed as above, without any additional terms or conditions.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+See [CONTRIBUTING.md](CONTRIBUTING.md).

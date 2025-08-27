@@ -3,6 +3,6 @@ services:
     container_name: personal-website
     build: .
     ports:
-      - "443:443"
+      - "127.0.0.1:443:443"
     restart: unless-stopped
     # TODO - Security Hardening
