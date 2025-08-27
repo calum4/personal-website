@@ -3,15 +3,11 @@ FROM node:lts-alpine3.22 AS builder
 WORKDIR /home/personal-website
 
 RUN npm install -g typescript
-
-# Build strip-config-comments helper
-COPY ./bin/strip-config-comments/package.json ./bin/strip-config-comments/package-lock.json ./bin/strip-config-comments/
-RUN cd ./bin/strip-config-comments/ && npm ci && cd ../../
-
 RUN npm install -g @angular/cli
 
+COPY ./bin/strip-config-comments/package.json ./bin/strip-config-comments/
 COPY ./package.json ./package-lock.json ./
-RUN npm ci # && npm cache clean --force
+RUN npm ci
 
 COPY . .
 
