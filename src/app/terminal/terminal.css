@@ -53,3 +53,12 @@
     display: block;
   }
 }
+
+app-command:first-child {
+  padding-top: 0;
+}
+
+app-command {
+  display: block;
+  padding-top: 0.5rem;
+}

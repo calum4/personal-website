@@ -32,11 +32,13 @@
         <br />
       }
 
-      @for (command of store.history(); track command.id) {
-        <app-command [command]="command" />
-      }
+      <div class="commands">
+        @for (command of store.history(); track command.id) {
+          <app-command [command]="command" />
+        }
 
-      <app-command />
+        <app-command />
+      </div>
     </div>
   }
 </div>
