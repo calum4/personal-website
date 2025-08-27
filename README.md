@@ -38,8 +38,8 @@ If you wish to use your own certificate instead of using a self-signed, that is 
 
 The startup script [`nginx/5-ssl.sh`](nginx/5-ssl.sh) checks for the presence of both:
 
-- `/etc/ssl/private/personal-website.key`
-- `/etc/ssl/certs/personal-website.crt`
+- `/etc/ssl/personal-website/personal-website.key`
+- `/etc/ssl/personal-website/personal-website.crt`
 
 Bind mount your cert and private key to these locations and Nginx will use your cert.
 
