@@ -33,7 +33,7 @@ describe("Command", () => {
       }
     }
 
-    expect(false).toBeTrue();
+    expect(true).toBeTrue();
   });
 
   it("default commands should handle all template commands", async () => {

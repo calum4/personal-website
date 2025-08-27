@@ -22,7 +22,7 @@ import { toSignal } from "@angular/core/rxjs-interop";
   styleUrl: "./command.css",
 })
 export class Command implements OnInit, OnDestroy {
-  @Input() command: CommandModel | null = null
+  @Input() command: CommandModel | null = null;
 
   readonly store = inject(CommandHistoryStore);
   readonly commandsService = inject(CommandsService);
