@@ -43,6 +43,7 @@ If the required subsection does not exist yet under **Unreleased**, create it!
 ### Requirements
 
 For the purposes of this tutorial it is assumed you have the following requirements pre-installed:
+
 - [NodeJS](https://nodejs.org/en/download)
 - [Angular CLI](https://angular.dev/tools/cli/setup-local)
 
@@ -62,4 +63,14 @@ npm run start
 
 ```bash
 npm run build
+```
+
+### Prettier
+
+```bash
+# Check formatting
+npx prettier -c .
+
+# Fix formatting
+npx prettier --write .
 ```
