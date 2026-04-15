@@ -1,4 +1,4 @@
-# Contribution guidelines
+# Contributing
 
 First off, thank you for considering contributing to personal-website.
 
@@ -15,7 +15,7 @@ keywords.
 ## Pull requests
 
 - Try to do one pull request per change.
-- Run prettier to format the code.
+- Run prettier to format the code `npx prettier . --write`.
 - Squash commits into one, unless you see a reason to not do so in which case explain why.
 - Ensure your changes pass against all CI pipelines
 
@@ -37,3 +37,29 @@ depending on the types of changes defined by
 - `Security` in case of vulnerabilities.
 
 If the required subsection does not exist yet under **Unreleased**, create it!
+
+## Usage
+
+### Requirements
+
+For the purposes of this tutorial it is assumed you have the following requirements pre-installed:
+- [NodeJS](https://nodejs.org/en/download)
+- [Angular CLI](https://angular.dev/tools/cli/setup-local)
+
+### Setup
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run start
+```
+
+### Build
+
+```bash
+npm run build
+```
