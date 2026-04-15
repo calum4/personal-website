@@ -108,7 +108,6 @@ export class Command implements OnInit, OnDestroy {
         element.value = similar[0];
       } else {
         this.store.newSuggestion(element.value, similar);
-        element.value = "";
       }
     } else if (event.key == "ArrowUp") {
       event.preventDefault();
