@@ -34,6 +34,7 @@ export type Config = DeepOmit<
   `__comment${string}`
 > & {
   customCommands: { [name: string]: CustomCommand };
+  aliases: { [name: string]: string };
 } & ConfigStrippedFields;
 
 @Injectable({ providedIn: "root" })

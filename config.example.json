@@ -66,5 +66,10 @@
       "enabled": true,
       "content": "pong"
     }
+  },
+
+  "__comment_aliases": "Command aliases, takes precedence over commands, format [[ alias: actual_command ]]",
+  "aliases": {
+    "time": "date"
   }
 }

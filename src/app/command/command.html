@@ -22,13 +22,13 @@
     </div>
   </div>
 
-  @if (command != null) {
-    @if (command.name === "") {
+  @if (command != null && normalisedCommandName() != null) {
+    @if (normalisedCommandName() === "") {
       <!-- New Line -->
     } @else if (command.suggestions !== undefined) {
       {{ command.suggestions.join("  ") }}
-    } @else if (commandsService.commandStatus(command.name) == CommandStatus.Enabled) {
-      @switch (command.name) {
+    } @else if (commandsService.commandStatus(normalisedCommandName()!) == CommandStatus.Enabled) {
+      @switch (normalisedCommandName()) {
         <!-- START COMMAND CHECK -->
         @case ("help") {
           Available Commands: {{ commandsService.enabledCommands().join(", ") }}
@@ -65,6 +65,13 @@
         }
         @case ("date") {
           {{ date() }}
+        }
+        @case ("alias") {
+          @if (config()?.aliases != undefined) {
+            @for (alias of config()!.aliases | keyvalue; track $index) {
+              <div>alias {{ alias.key }}='{{ alias.value }}'</div>
+            }
+          }
         }
         @default {
           @if (commandsService.customCommand(command.name)?.enabled ?? false) {

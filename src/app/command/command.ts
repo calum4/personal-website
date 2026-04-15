@@ -16,11 +16,13 @@ import { CommandsService, CommandStatus } from "../core/services/commands.servic
 import { ConfigService } from "../core/services/config.service";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { DateTime } from "luxon";
+import { KeyValuePipe } from "@angular/common";
 
 @Component({
   selector: "app-command",
   templateUrl: "./command.html",
   styleUrl: "./command.css",
+  imports: [KeyValuePipe],
 })
 export class Command implements OnInit, OnDestroy {
   @Input() command: CommandModel | null = null;
@@ -34,6 +36,7 @@ export class Command implements OnInit, OnDestroy {
 
   readonly replayIndex = signal<number | null>(null);
   readonly hiddenEmailComponent = viewChild<ElementRef<HTMLDivElement>>("hiddenEmail");
+  readonly normalisedCommandName = signal(this.command?.name ?? null);
 
   readonly repoUrl = new URL(repository.url);
 
@@ -54,6 +57,8 @@ export class Command implements OnInit, OnDestroy {
   ngOnInit() {
     if (this.command === null) {
       document.addEventListener("click", this.onClickEvent);
+    } else {
+      this.normalisedCommandName.set(this.commandsService.normalise(this.command.name));
     }
   }
 
@@ -154,6 +159,15 @@ export class Command implements OnInit, OnDestroy {
     for (const name of this.commandsService.enabledCommands()) {
       if (name.startsWith(command)) {
         similar.push(name);
+      }
+    }
+
+    const config = this.config();
+    if (config?.aliases != undefined) {
+      for (const name of Object.keys(config.aliases)) {
+        if (name.startsWith(command)) {
+          similar.push(name);
+        }
       }
     }
 

@@ -13,6 +13,7 @@ export const DEFAULT_COMMANDS = [
   "reset",
   "email",
   "date",
+  "alias",
 ];
 
 export enum CommandStatus {
@@ -76,5 +77,14 @@ export class CommandsService {
     const data = this.config()?.customCommands[command];
     if (!data) return null;
     return data;
+  }
+
+  /**
+   * Normalise the provided command name.
+   *
+   * If the command is an alias, follows the to the alias and returns that command name.
+   */
+  normalise(command: string): string {
+    return this.config()?.aliases[command] ?? command;
   }
 }

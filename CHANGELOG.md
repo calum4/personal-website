@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `date` command
+- Command aliases, see [config](./config.example.json)
 
 ## [1.0.0]
 
