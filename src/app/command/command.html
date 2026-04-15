@@ -63,6 +63,9 @@
             >
           </div>
         }
+        @case ("date") {
+          {{ date() }}
+        }
         @default {
           @if (commandsService.customCommand(command.name)?.enabled ?? false) {
             {{ commandsService.customCommand(command.name)!.content }}

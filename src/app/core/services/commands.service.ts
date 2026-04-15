@@ -12,6 +12,7 @@ export const DEFAULT_COMMANDS = [
   "acknowledgement",
   "reset",
   "email",
+  "date",
 ];
 
 export enum CommandStatus {

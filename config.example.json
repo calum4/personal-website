@@ -49,6 +49,15 @@
 
       "__comment_domainLevels__": "Domain levels, eg 'email.example.com' would be ['email', 'example', 'com']",
       "domainLevels": ["email", "example", "com"]
+    },
+
+    "date": {
+      "__comment__": "Outputs the date and time in the provided time zone, eg 15 April 2026 at 20:14 BST",
+
+      "enabled": true,
+
+      "__comment_timezone": "See https://moment.github.io/luxon/#/zones?id=specifying-a-zone",
+      "timezone": "Europe/London"
     }
   },
 

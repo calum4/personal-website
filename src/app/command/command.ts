@@ -15,6 +15,7 @@ import { CommandModel } from "./command.model";
 import { CommandsService, CommandStatus } from "../core/services/commands.service";
 import { ConfigService } from "../core/services/config.service";
 import { toSignal } from "@angular/core/rxjs-interop";
+import { DateTime } from "luxon";
 
 @Component({
   selector: "app-command",
@@ -171,5 +172,11 @@ export class Command implements OnInit, OnDestroy {
       config.defaultCommands.email.domainLevels.join(".<!-- dufhi -->");
 
     element.setHTMLUnsafe(`Email me at -> ${content}`);
+  }
+
+  date(): string {
+    let zone = this.config()?.defaultCommands.date.timezone ?? "utc";
+
+    return DateTime.now().setZone(zone).toLocaleString(DateTime.DATETIME_FULL);
   }
 }
