@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `date` command
 - Command aliases, see [config](./config.example.json)
+- (Docker) Add files to `./public/public/` to have them served at `/public/`. Does not require rebuild to reflect
+  changes
+
+### Fixed
+
+- Tab completion no longer clears the current command
+
+### Changed
+
+- (Docker) BREAKING: Moved `compose.yml` to `compose.example.yml`
+- (Docker) BREAKING: `NGINX_SERVER_NAME` environment variable is now respected. If unset, a 403 error will be returned
+- (Docker) SSL certificates now use RSA 4096
 
 ## [1.0.0]
 
