@@ -56,8 +56,18 @@
 
       "enabled": true,
 
-      "__comment_timezone": "See https://moment.github.io/luxon/#/zones?id=specifying-a-zone",
+      "__comment_timezone__": "See https://moment.github.io/luxon/#/zones?id=specifying-a-zone",
       "timezone": "Europe/London"
+    },
+
+    "pgp": {
+      "enabled": false,
+
+      "__comment_url__": "Relative or absolute Url of your PGP key",
+      "url": "public/example.pgp",
+
+      "__comment_newTab__": "Open the link in a new tab?",
+      "newTab": false
     }
   },
 
@@ -68,7 +78,7 @@
     }
   },
 
-  "__comment_aliases": "Command aliases, takes precedence over commands, format [[ alias: actual_command ]]",
+  "__comment_aliases__": "Command aliases, takes precedence over commands, format [[ alias: actual_command ]]",
   "aliases": {
     "time": "date"
   }

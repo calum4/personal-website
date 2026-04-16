@@ -14,6 +14,7 @@ export const DEFAULT_COMMANDS = [
   "email",
   "date",
   "alias",
+  "pgp",
 ];
 
 export enum CommandStatus {

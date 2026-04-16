@@ -9,10 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `date` command
+- `date` command, see [config](./config.example.json)
 - Command aliases, see [config](./config.example.json)
 - (Docker) Add files to `./public/public/` to have them served at `/public/`. Does not require rebuild to reflect
   changes
+- `pgp` command, see [config](./config.example.json)
 
 ### Fixed
 

@@ -73,6 +73,12 @@
             }
           }
         }
+        @case ("pgp") {
+          @let pgp = config()!.defaultCommands.pgp;
+
+          You can find my PGP key here ->
+          <a [href]="pgp.url" [target]="pgp.newTab ? '_blank' : '_self'">click me</a>
+        }
         @default {
           @if (commandsService.customCommand(command.name)?.enabled ?? false) {
             {{ commandsService.customCommand(command.name)!.content }}
