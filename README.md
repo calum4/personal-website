@@ -70,7 +70,7 @@ Bind mount your cert and private key to these locations and Nginx will use your 
 #### Environment Variables
 
 | Name                | Description                                                                                                                                                                                                                    |
-| ------------------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `NGINX_SERVER_NAME` | Used in the Nginx configuration template to respond to the correct server name. By default will respond to requests on 127.0.0.1. For more information view the [Nginx wiki](https://nginx.org/en/docs/http/server_names.html) |
 
 ### Build and deploy manually
