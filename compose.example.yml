@@ -2,11 +2,14 @@ services:
   personal-website:
     container_name: personal-website
     build: .
+    environment:
+      NGINX_SERVER_NAME: "127.0.0.1"
     ports:
       - "127.0.0.1:80:80" # Redirects to 443
       - "127.0.0.1:443:443"
     volumes:
-      - personal-website-ssl:/etc/ssl/personal-website
+      - personal-website-ssl:/etc/ssl/personal-website/
+      - default-server-ssl:/etc/ssl/default-server/
     read_only: true
     tmpfs:
       - /tmp
@@ -18,3 +21,4 @@ services:
 
 volumes:
   personal-website-ssl:
+  default-server-ssl:

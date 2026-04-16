@@ -26,6 +26,7 @@ COPY --chown=nginx:nginx ./nginx/1-environment-setup.sh /docker-entrypoint.d/1-e
 RUN chmod +x /docker-entrypoint.d/1-environment-setup.sh
 
 RUN mkdir -p /etc/ssl/personal-website/ && chown -R nginx:nginx /etc/ssl/personal-website
+RUN mkdir -p /etc/ssl/default-server/ && chown -R nginx:nginx /etc/ssl/default-server/
 
 RUN rm /etc/nginx/conf.d/default.conf && echo "include /tmp/nginx/conf.d/*.conf;" >> /etc/nginx/conf.d/default.conf
 

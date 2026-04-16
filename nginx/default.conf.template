@@ -1,4 +1,27 @@
 server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+
+    location / {
+        return 403;
+    }
+}
+
+server {
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
+    server_name _;
+
+    ssl_certificate /etc/ssl/default-server/default.crt;
+    ssl_certificate_key /etc/ssl/default-server/default.key;
+
+    location / {
+        return 403;
+    }
+}
+
+server {
     listen 80;
     listen [::]:80;
 
