@@ -51,7 +51,6 @@ The full changelog can be found at [CHANGELOG.md](CHANGELOG.md)
 4. Copy any files you wish to be served alongside your website to `./public/public/`.
 5. Run the container with Docker Compose `docker compose up -d --build`.
 6. The container will now be bound to `127.0.0.1:443` using a self-signed certificate generated on first start-up.
-7. You can now place the container behind a reverse proxy such as Nginx.
 
 <details>
   <summary>Bring your own cert</summary>
