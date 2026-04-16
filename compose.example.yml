@@ -10,6 +10,7 @@ services:
     volumes:
       - personal-website-ssl:/etc/ssl/personal-website/
       - default-server-ssl:/etc/ssl/default-server/
+      - ./public/public/:/usr/share/personal-website/html/public/
     read_only: true
     tmpfs:
       - /tmp

@@ -19,6 +19,7 @@
             "assets": [
               {
                 "glob": "**/*",
+                "ignore": ["public/**/*"],
                 "input": "public"
               }
             ],
@@ -77,6 +78,7 @@
             "assets": [
               {
                 "glob": "**/*",
+                "ignore": ["public/**/*"],
                 "input": "public"
               },
               {

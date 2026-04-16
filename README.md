@@ -48,9 +48,10 @@ The full changelog can be found at [CHANGELOG.md](CHANGELOG.md)
    the related non-comment field.
 3. Copy `compose.example.yml` to `compose.yml` and configure as you desire. Note - binds to `127.0.0.1` by default, to
    expose to the internet by default, bind to `0.0.0.0`. For environment variables, view [here](#environment-variables).
-4. Run the container with Docker Compose `docker compose up -d --build`.
-5. The container will now be bound to `127.0.0.1:443` using a self-signed certificate generated on first start-up.
-6. You can now place the container behind a reverse proxy such as Nginx.
+4. Copy any files you wish to be served alongside your website to `./public/public/`.
+5. Run the container with Docker Compose `docker compose up -d --build`.
+6. The container will now be bound to `127.0.0.1:443` using a self-signed certificate generated on first start-up.
+7. You can now place the container behind a reverse proxy such as Nginx.
 
 <details>
   <summary>Bring your own cert</summary>

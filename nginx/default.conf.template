@@ -70,6 +70,19 @@ server {
         add_header Cache-Control "no-cache";
     }
 
+    location = /public/README.md {
+        return 404;
+    }
+
+    location = /public/.gitkeep {
+        return 404;
+    }
+
+    location ^~ /public/ {
+        root /usr/share/personal-website/html;
+        add_header Cache-Control "no-cache";
+    }
+
     location ~* \.(?:ico|css|js|gif|jpe?g|png|woff2?|eot|ttf|svg|map)$ {
         root /usr/share/personal-website/html;
 
