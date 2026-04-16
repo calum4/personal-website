@@ -43,3 +43,6 @@ Thumbs.db
 
 # Application Config Files
 config.json
+
+# Other
+compose.yml

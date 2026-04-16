@@ -46,9 +46,10 @@ The full changelog can be found at [CHANGELOG.md](CHANGELOG.md)
 1. Clone the repository
 2. Copy `config.example.json` to `config.json` and configure as you desire. Fields beginning with `__comment` describe
    the related non-comment field.
-3. Run the container with Docker Compose `docker compose up -d --build`.
-4. The container will now be bound to `127.0.0.1:443` using a self-signed certificate generated on first start-up.
-5. You can now place the container behind a reverse proxy such as Nginx.
+3. Copy `compose.example.yml` to `compose.yml` and configure as you desire.
+4. Run the container with Docker Compose `docker compose up -d --build`.
+5. The container will now be bound to `127.0.0.1:443` using a self-signed certificate generated on first start-up.
+6. You can now place the container behind a reverse proxy such as Nginx.
 
 <details>
   <summary>Bring your own cert</summary>
