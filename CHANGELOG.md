@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `help` command - sort commands alphabetically
+- (Docker) `REALIP_FROM_CLOUDFLARE` environment variable for setting X-Real-IP from CF-Connecting-IP
 
 ## [2.0.0]
 

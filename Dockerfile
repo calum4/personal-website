@@ -17,18 +17,15 @@ FROM nginxinc/nginx-unprivileged:1.29-alpine3.22-slim AS initial
 
 USER root
 
-RUN apk add --no-cache openssl
+RUN apk add --no-cache openssl curl jq
 
-COPY --chown=nginx:nginx ./nginx/5-ssl.sh /docker-entrypoint.d/5-ssl.sh
-RUN chmod +x /docker-entrypoint.d/5-ssl.sh
-
-COPY --chown=nginx:nginx ./nginx/1-environment-setup.sh /docker-entrypoint.d/1-environment-setup.sh
-RUN chmod +x /docker-entrypoint.d/1-environment-setup.sh
+COPY nginx/entrypoint.d/*.sh /docker-entrypoint.d/
+RUN chmod +x /docker-entrypoint.d/*.sh
 
 RUN mkdir -p /etc/ssl/personal-website/ && chown -R nginx:nginx /etc/ssl/personal-website
 RUN mkdir -p /etc/ssl/default-server/ && chown -R nginx:nginx /etc/ssl/default-server/
 
-RUN rm /etc/nginx/conf.d/default.conf && echo "include /tmp/nginx/conf.d/*.conf;" >> /etc/nginx/conf.d/default.conf
+COPY --chown=nginx:nginx nginx/conf.d/* /etc/nginx/conf.d/
 
 FROM initial
 

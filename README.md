@@ -64,7 +64,7 @@ The full changelog can be found at [CHANGELOG.md](CHANGELOG.md)
 
 If you wish to use your own certificate instead of using a self-signed, that is possible.
 
-The startup script [`nginx/5-ssl.sh`](nginx/5-ssl.sh) checks for the presence of both inside the container at:
+The startup script [`nginx/5-ssl.sh`](nginx/entrypoint.d/5-ssl.sh) checks for the presence of both inside the container at:
 
 - `/etc/ssl/personal-website/personal-website.key`
 - `/etc/ssl/personal-website/personal-website.crt`
@@ -75,9 +75,10 @@ Bind mount your cert and private key to these locations and Nginx will use your 
 
 #### Environment Variables
 
-| Name                | Description                                                                                                                                                                                                                    |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `NGINX_SERVER_NAME` | Used in the Nginx configuration template to respond to the correct server name. By default will respond to requests on 127.0.0.1. For more information view the [Nginx wiki](https://nginx.org/en/docs/http/server_names.html) |
+| Name                     | Description                                                                                                                                                                                                                    |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `NGINX_SERVER_NAME`      | Used in the Nginx configuration template to respond to the correct server name. By default will respond to requests on 127.0.0.1. For more information view the [Nginx wiki](https://nginx.org/en/docs/http/server_names.html) |
+| `REALIP_FROM_CLOUDFLARE` | When `true`, pulls Cloudflare's IPs from their API and sets the X-Real-IP header from the incomming CF-Connecting-IP header when the source is a Cloudflare IP                                                                 |
 
 ### Build and deploy manually
 
