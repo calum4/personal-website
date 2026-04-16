@@ -52,6 +52,8 @@ export class CommandsService {
         commands.push(name);
       }
 
+      commands.sort();
+
       this._enabledCommands = commands;
     }
 
