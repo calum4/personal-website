@@ -15,9 +15,14 @@ RUN npm run build
 
 FROM nginxinc/nginx-unprivileged:1.29-alpine3.22-slim AS initial
 
+ARG SET_CAP_NET_BIND_SERVICE
+
 USER root
 
 RUN apk add --no-cache openssl curl jq
+
+COPY nginx/build-scripts/*.sh /build-scripts/
+RUN chmod +x /build-scripts/*.sh && /build-scripts/*.sh && rm -r /build-scripts/
 
 COPY nginx/entrypoint.d/*.sh /docker-entrypoint.d/
 RUN chmod +x /docker-entrypoint.d/*.sh

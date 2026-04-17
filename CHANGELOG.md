@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `help` command - sort commands alphabetically
 - (Docker) `REALIP_FROM_CLOUDFLARE` environment variable for setting X-Real-IP from CF-Connecting-IP
+- BREAKING: (Docker) Support host & bridge networking
 
 ## [2.0.0]
 

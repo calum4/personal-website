@@ -1,6 +1,6 @@
 server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+    listen ${NGINX_IPV4_LISTEN_ADDR}:${NGINX_HTTP_LISTEN_PORT} default_server;
+    listen ${NGINX_IPV6_LISTEN_ADDR}:${NGINX_HTTP_LISTEN_PORT} default_server;
     server_name _;
 
     location / {
@@ -9,8 +9,8 @@ server {
 }
 
 server {
-    listen 443 ssl default_server;
-    listen [::]:443 ssl default_server;
+    listen ${NGINX_IPV4_LISTEN_ADDR}:${NGINX_HTTPS_LISTEN_PORT} ssl default_server;
+    listen ${NGINX_IPV6_LISTEN_ADDR}:${NGINX_HTTPS_LISTEN_PORT} ssl default_server;
     server_name _;
 
     ssl_certificate /etc/ssl/default-server/default.crt;
@@ -22,16 +22,16 @@ server {
 }
 
 server {
-    listen 80;
-    listen [::]:80;
+    listen ${NGINX_IPV4_LISTEN_ADDR}:${NGINX_HTTP_LISTEN_PORT};
+    listen ${NGINX_IPV6_LISTEN_ADDR}:${NGINX_HTTP_LISTEN_PORT};
 
     server_name ${NGINX_SERVER_NAME};
     return 302 https://$server_name$request_uri;
 }
 
 server {
-    listen 443 ssl;
-    listen [::]:443 ssl;
+    listen ${NGINX_IPV4_LISTEN_ADDR}:${NGINX_HTTPS_LISTEN_PORT} ssl;
+    listen ${NGINX_IPV6_LISTEN_ADDR}:${NGINX_HTTPS_LISTEN_PORT} ssl;
     server_name ${NGINX_SERVER_NAME};
 
     include snippets/ssl-params.conf;
