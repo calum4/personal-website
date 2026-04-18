@@ -75,14 +75,16 @@ Bind mount your cert and private key to these locations and Nginx will use your 
 
 #### Environment Variables
 
-| Name                      | Description                                                                                                                                                                                                                    |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `NGINX_SERVER_NAME`       | Used in the Nginx configuration template to respond to the correct server name. By default will respond to requests on 127.0.0.1. For more information view the [Nginx wiki](https://nginx.org/en/docs/http/server_names.html) |
-| `REALIP_FROM_CLOUDFLARE`  | When `true`, pulls Cloudflare's IPs from their API and sets the X-Real-IP header from the incomming CF-Connecting-IP header when the source is a Cloudflare IP                                                                 |
-| `NGINX_HTTP_LISTEN_PORT`  | The port Nginx binds to for serving HTTP traffic (e.g. 80)                                                                                                                                                                     |
-| `NGINX_HTTPS_LISTEN_PORT` | The port Nginx binds to for serving HTTPS traffic (e.g. 443)                                                                                                                                                                   |
-| `NGINX_IPV4_LISTEN_ADDR`  | The IPV4 address Nginx binds to (e.g. 0.0.0.0, 127.0.0.1)                                                                                                                                                                      |
-| `NGINX_IPV6_LISTEN_ADDR`  | The IPV4 address Nginx binds to (e.g. [::], [::1])                                                                                                                                                                             |
+| Name                      | Description                                                                                                                                                                                                 |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NGINX_SERVER_NAME`       | Used in the Nginx configuration template to respond to the correct server name, see [Nginx wiki](https://nginx.org/en/docs/http/server_names.html)                                                          |
+| `REALIP_SOURCE`           | (`false`, `cloudflare`, `custom`) Extract the realip of a user from a request header                                                                                                                        |
+| `REALIP_CUSTOM_FROM`      | Ignored if REALIP_SOURCE not 'custom'. Comma-seperated list of realip sources, see https://nginx.org/en/docs/http/ngx_http_realip_module.html#set_real_ip_from (e.g. `127.0.0.0/24,192.168.0.5,10.0.0.0/24` |
+| `REALIP_CUSTOM_HEADER`    | Ignored if REALIP_SOURCE not 'custom'. See https://nginx.org/en/docs/http/ngx_http_realip_module.html#real_ip_header (e.g. `X-Real-IP`)                                                                     |
+| `NGINX_HTTP_LISTEN_PORT`  | The port Nginx binds to for serving HTTP traffic (e.g. `80`)                                                                                                                                                |
+| `NGINX_HTTPS_LISTEN_PORT` | The port Nginx binds to for serving HTTPS traffic (e.g. `443`)                                                                                                                                              |
+| `NGINX_IPV4_LISTEN_ADDR`  | The IPV4 address Nginx binds to (e.g. `0.0.0.0`, `127.0.0.1`)                                                                                                                                               |
+| `NGINX_IPV6_LISTEN_ADDR`  | The IPV4 address Nginx binds to (e.g. `[::]`, `[::1]`)                                                                                                                                                      |
 
 ### Build and deploy manually
 

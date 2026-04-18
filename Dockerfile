@@ -19,7 +19,7 @@ ARG SET_CAP_NET_BIND_SERVICE
 
 USER root
 
-RUN apk add --no-cache openssl curl jq
+RUN apk add --no-cache openssl curl jq bash
 
 COPY nginx/build-scripts/*.sh /build-scripts/
 RUN chmod +x /build-scripts/*.sh && /build-scripts/*.sh && rm -r /build-scripts/

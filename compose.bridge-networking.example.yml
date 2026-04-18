@@ -8,7 +8,9 @@ services:
         - SET_CAP_NET_BIND_SERVICE=false # Not required when using bridge networking
     environment:
       NGINX_SERVER_NAME: "example.com"
-      REALIP_FROM_CLOUDFLARE: "false" # Won't work when Docker isn't using host networking
+      REALIP_SOURCE: "false" # `false`, `cloudflare`, `custom`
+      REALIP_CUSTOM_FROM: "" # Ignored if REALIP_SOURCE not 'custom'. Comma-seperated list of realip sources, see https://nginx.org/en/docs/http/ngx_http_realip_module.html#set_real_ip_from
+      REALIP_CUSTOM_HEADER: "" # Ignored if REALIP_SOURCE not 'custom'. See https://nginx.org/en/docs/http/ngx_http_realip_module.html#real_ip_header
       NGINX_HTTP_LISTEN_PORT: 80
       NGINX_HTTPS_LISTEN_PORT: 443
       NGINX_IPV4_LISTEN_ADDR: "0.0.0.0"
