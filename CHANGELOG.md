@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   'REALIP_CUSTOM_FROM', 'REALIP_CUSTOM_HEADER'
 - BREAKING: (Docker) Support host & bridge networking
 
+### Changed
+
+- (Docker) Utilise local logging driver
+
 ## [2.0.0]
 
 ### Added

@@ -29,6 +29,8 @@ services:
       - no-new-privileges=true
     cap_drop:
       - ALL
+    logging:
+      driver: local
     restart: unless-stopped
 
 volumes:
