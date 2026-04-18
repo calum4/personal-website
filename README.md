@@ -26,7 +26,20 @@ A customisable terminal-style website, intended to act as a portfolio.
 
 The full changelog can be found at [CHANGELOG.md](CHANGELOG.md)
 
-## [2.0.0]
+## [3.0.0] - 2026-04-18
+
+### Added
+
+- `help` command - sort commands alphabetically
+- (Docker) Support setting Nginx `real_ip_from`, see docs for environment variables 'REALIP_SOURCE',
+  'REALIP_CUSTOM_FROM', 'REALIP_CUSTOM_HEADER'
+- BREAKING: (Docker) Support host & bridge networking
+
+### Changed
+
+- (Docker) Utilise local logging driver
+
+## [2.0.0] - 2026-04-16
 
 ### Added
 

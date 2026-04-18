@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-04-18
+
 ### Added
 
 - `help` command - sort commands alphabetically
@@ -18,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - (Docker) Utilise local logging driver
 
-## [2.0.0]
+## [2.0.0] - 2026-04-16
 
 ### Added
 
@@ -38,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - (Docker) BREAKING: `NGINX_SERVER_NAME` environment variable is now respected. If unset, a 403 error will be returned
 - (Docker) SSL certificates now use RSA 4096
 
-## [1.0.0]
+## [1.0.0] - 2025-08-25
 
 ### Added
 
